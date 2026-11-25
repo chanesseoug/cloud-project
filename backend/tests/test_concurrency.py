@@ -2,14 +2,17 @@
 from concurrent.futures import ThreadPoolExecutor
 from datetime import UTC, datetime, timedelta
 from threading import Barrier
+from time import sleep
 from uuid import uuid4
 
 from pwdlib import PasswordHash
 from sqlalchemy import delete, func, select, text
-from sqlalchemy.exc import IntegrityError
+from sqlalchemy.exc import IntegrityError, OperationalError
 
 from app.core.database import SessionLocal
 from app.models import Reservation, Room, User
+
+MAX_ATTEMPTS = 3
 
 
 def test_concurrent_booking():
@@ -52,34 +55,63 @@ def test_concurrent_booking():
         barrier = Barrier(2, timeout=15)
 
         def attempt_booking(user_id):
-            with SessionLocal() as db:
-                db.execute(
-                    text("SET LOCAL lock_timeout = '10s'")
-                )
+            barrier.wait()
 
-                reservation = Reservation(
-                    user_id=user_id,
-                    room_id=room_id,
-                    start_time=start,
-                    end_time=end,
-                    status="confirmed",
-                )
+            for attempt in range(MAX_ATTEMPTS):
+                with SessionLocal() as db:
+                    try:
+                        db.execute(
+                            text("SET LOCAL lock_timeout = '10s'")
+                        )
 
-                db.add(reservation)
+                        reservation = Reservation(
+                            user_id=user_id,
+                            room_id=room_id,
+                            start_time=start,
+                            end_time=end,
+                            status="confirmed",
+                        )
 
-                barrier.wait()
+                        db.add(reservation)
+                        db.commit()
 
-                try:
-                    db.commit()
-                    return "confirmed"
+                        return "confirmed"
 
-                except IntegrityError as exc:
-                    db.rollback()
+                    except IntegrityError as exc:
+                        db.rollback()
 
-                    if getattr(exc.orig, "sqlstate", None) == "23P01":
-                        return "conflict"
+                        sqlstate = getattr(
+                            exc.orig, "sqlstate", None
+                        )
 
-                    raise
+                        if sqlstate == "23P01":
+                            return "conflict"
+
+                        raise
+
+                    except OperationalError as exc:
+                        db.rollback()
+
+                        sqlstate = getattr(
+                            exc.orig, "sqlstate", None
+                        )
+
+                        if (
+                            sqlstate != "40P01"
+                            or attempt == MAX_ATTEMPTS - 1
+                        ):
+                            raise
+
+                        print(
+                            f"\nDeadlock detected for user {user_id}. "
+                            f"Retry {attempt + 1}/{MAX_ATTEMPTS - 1}."
+                        )
+
+                sleep(0.1 * (attempt + 1))
+
+            raise AssertionError(
+                "Maximum booking attempts exceeded"
+            )
 
         with ThreadPoolExecutor(max_workers=2) as executor:
             results = list(

@@ -61,7 +61,7 @@ def create_reservation(
     room = db.scalar(
         select(Room)
         .where(Room.id == data.room_id)
-        .with_for_update(read=True)
+        .with_for_update()
     )
 
     if room is None or not room.is_active:

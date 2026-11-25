@@ -1,0 +1,418 @@
+============================= test session starts ==============================
+platform linux -- Python 3.12.3, pytest-9.2.0, pluggy-1.7.0 -- /home/couguenoune/.venvs/roombooking/bin/python
+cachedir: .pytest_cache
+rootdir: /mnt/c/users/c.ouguenoune/Desktop/cours/cloud/backend
+plugins: anyio-4.16.0
+collecting ... collected 56 items
+
+tests/test_auth.py::test_password_hashing PASSED                         [  1%]
+tests/test_auth.py::test_register_user PASSED                            [  3%]
+tests/test_auth.py::test_password_is_hashed_in_database PASSED           [  5%]
+tests/test_auth.py::test_duplicate_email_rejected PASSED                 [  7%]
+tests/test_auth.py::test_short_password_rejected PASSED                  [  8%]
+tests/test_auth.py::test_invalid_email_rejected PASSED                   [ 10%]
+tests/test_auth.py::test_admin_self_registration_rejected PASSED         [ 12%]
+tests/test_auth.py::test_valid_login PASSED                              [ 14%]
+tests/test_auth.py::test_wrong_password_rejected PASSED                  [ 16%]
+tests/test_auth.py::test_unknown_user_rejected PASSED                    [ 17%]
+tests/test_auth.py::test_authenticated_profile PASSED                    [ 19%]
+tests/test_auth.py::test_missing_token_rejected PASSED                   [ 21%]
+tests/test_auth.py::test_invalid_token_rejected PASSED                   [ 23%]
+tests/test_auth.py::test_expired_token_rejected PASSED                   [ 25%]
+tests/test_auth.py::test_user_cannot_access_admin PASSED                 [ 26%]
+tests/test_auth.py::test_admin_can_access_admin PASSED                   [ 28%]
+tests/test_auth.py::test_inactive_user_cannot_login PASSED               [ 30%]
+tests/test_auth.py::test_inactive_user_token_rejected PASSED             [ 32%]
+tests/test_concurrency.py::test_concurrent_booking FAILED                [ 33%]
+tests/test_reservations.py::test_valid_reservation PASSED                [ 35%]
+tests/test_reservations.py::test_overlapping_reservation_rejected PASSED [ 37%]
+tests/test_reservations.py::test_adjacent_reservations_allowed PASSED    [ 39%]
+tests/test_reservations.py::test_cancelled_reservation_does_not_block PASSED [ 41%]
+tests/test_reservations.py::test_invalid_time_range_rejected PASSED      [ 42%]
+tests/test_reservations.py::test_same_time_different_rooms_allowed PASSED [ 44%]
+tests/test_reservations_api.py::test_booking_requires_authentication PASSED [ 46%]
+tests/test_reservations_api.py::test_create_booking PASSED               [ 48%]
+tests/test_reservations_api.py::test_duplicate_booking PASSED            [ 50%]
+tests/test_reservations_api.py::test_booking_in_past PASSED              [ 51%]
+tests/test_reservations_api.py::test_invalid_time_range PASSED           [ 53%]
+tests/test_reservations_api.py::test_missing_timezone PASSED             [ 55%]
+tests/test_reservations_api.py::test_unknown_room PASSED                 [ 57%]
+tests/test_reservations_api.py::test_list_own_bookings PASSED            [ 58%]
+tests/test_reservations_api.py::test_cancel_own_booking PASSED           [ 60%]
+tests/test_reservations_api.py::test_other_user_cannot_read_booking PASSED [ 62%]
+tests/test_reservations_api.py::test_other_user_cannot_cancel_booking PASSED [ 64%]
+tests/test_reservations_api.py::test_admin_can_list_all_bookings PASSED  [ 66%]
+tests/test_reservations_api.py::test_user_cannot_list_all_bookings PASSED [ 67%]
+tests/test_reservations_api.py::test_availability_after_booking PASSED   [ 69%]
+tests/test_reservations_api.py::test_availability_after_cancellation PASSED [ 71%]
+tests/test_reservations_api.py::test_admin_can_access_statistics PASSED  [ 73%]
+tests/test_reservations_api.py::test_user_cannot_access_statistics PASSED [ 75%]
+tests/test_reservations_api.py::test_booking_inactive_room_rejected PASSED [ 76%]
+tests/test_rooms_api.py::test_rooms_require_authentication PASSED        [ 78%]
+tests/test_rooms_api.py::test_list_rooms PASSED                          [ 80%]
+tests/test_rooms_api.py::test_get_room PASSED                            [ 82%]
+tests/test_rooms_api.py::test_room_not_found PASSED                      [ 83%]
+tests/test_rooms_api.py::test_capacity_filter PASSED                     [ 85%]
+tests/test_rooms_api.py::test_equipment_filter PASSED                    [ 87%]
+tests/test_rooms_api.py::test_user_cannot_create_room PASSED             [ 89%]
+tests/test_rooms_api.py::test_admin_can_create_room PASSED               [ 91%]
+tests/test_rooms_api.py::test_invalid_capacity PASSED                    [ 92%]
+tests/test_rooms_api.py::test_duplicate_room_name PASSED                 [ 94%]
+tests/test_rooms_api.py::test_admin_can_update_room PASSED               [ 96%]
+tests/test_rooms_api.py::test_admin_can_deactivate_room PASSED           [ 98%]
+tests/test_rooms_api.py::test_user_cannot_update_room PASSED             [100%]
+
+=================================== FAILURES ===================================
+___________________________ test_concurrent_booking ____________________________
+
+self = <sqlalchemy.engine.base.Connection object at 0x7b0374bfadb0>
+dialect = <sqlalchemy.dialects.postgresql.psycopg.PGDialect_psycopg object at 0x7b037687eb70>
+context = <sqlalchemy.dialects.postgresql.psycopg.PGExecutionContext_psycopg object at 0x7b0374c79dc0>
+statement = <sqlalchemy.dialects.postgresql.psycopg.PGCompiler_psycopg object at 0x7b0374c78920>
+parameters = [{'user_id': 133, 'room_id': 88, 'start_time': datetime.datetime(2026, 11, 28, 2, 38, 23, 57425, tzinfo=datetime.timezone.utc), 'end_time': datetime.datetime(2026, 11, 28, 4, 38, 23, 57425, tzinfo=datetime.timezone.utc), ...}]
+
+    def _exec_single_context(
+        self,
+        dialect: Dialect,
+        context: ExecutionContext,
+        statement: Union[str, Compiled],
+        parameters: Optional[_AnyMultiExecuteParams],
+    ) -> CursorResult[Unpack[TupleAny]]:
+        """continue the _execute_context() method for a single DBAPI
+        cursor.execute() or cursor.executemany() call.
+    
+        """
+        if dialect.bind_typing is BindTyping.SETINPUTSIZES:
+            generic_setinputsizes = context._prepare_set_input_sizes()
+    
+            if generic_setinputsizes:
+                try:
+                    dialect.do_set_input_sizes(
+                        context.cursor, generic_setinputsizes, context
+                    )
+                except BaseException as e:
+                    self._handle_dbapi_exception(
+                        e, str(statement), parameters, None, context
+                    )
+    
+        cursor, str_statement, parameters = (
+            context.cursor,
+            context.statement,
+            context.parameters,
+        )
+    
+        effective_parameters: Optional[_AnyExecuteParams]
+    
+        if not context.executemany:
+            effective_parameters = parameters[0]
+        else:
+            effective_parameters = parameters
+    
+        evt_handled: bool = False
+        try:
+            if self._has_events or self.engine._has_events:
+                for fn in self.dispatch.before_cursor_execute:
+                    str_statement, effective_parameters = fn(
+                        self,
+                        cursor,
+                        str_statement,
+                        effective_parameters,
+                        context,
+                        context.executemany,
+                    )
+    
+            if self._echo:
+                self._log_info(str_statement)
+    
+                stats = context._get_cache_stats()
+    
+                self._log_parameters(
+                    effective_parameters, stats, ismulti=context.executemany
+                )
+    
+            if context.execute_style is ExecuteStyle.EXECUTEMANY:
+                effective_parameters = cast(
+                    "_CoreMultiExecuteParams", effective_parameters
+                )
+                if self.dialect._has_events:
+                    for fn in self.dialect.dispatch.do_executemany:
+                        if fn(
+                            cursor,
+                            str_statement,
+                            effective_parameters,
+                            context,
+                        ):
+                            evt_handled = True
+                            break
+                if not evt_handled:
+                    self.dialect.do_executemany(
+                        cursor,
+                        str_statement,
+                        effective_parameters,
+                        context,
+                    )
+            elif not effective_parameters and context.no_parameters:
+                if self.dialect._has_events:
+                    for fn in self.dialect.dispatch.do_execute_no_params:
+                        if fn(cursor, str_statement, context):
+                            evt_handled = True
+                            break
+                if not evt_handled:
+                    self.dialect.do_execute_no_params(
+                        cursor, str_statement, context
+                    )
+            else:
+                effective_parameters = cast(
+                    "_CoreSingleExecuteParams", effective_parameters
+                )
+                if self.dialect._has_events:
+                    for fn in self.dialect.dispatch.do_execute:
+                        if fn(
+                            cursor,
+                            str_statement,
+                            effective_parameters,
+                            context,
+                        ):
+                            evt_handled = True
+                            break
+                if not evt_handled:
+>                   self.dialect.do_execute(
+                        cursor, str_statement, effective_parameters, context
+                    )
+
+/home/couguenoune/.venvs/roombooking/lib/python3.12/site-packages/sqlalchemy/engine/base.py:1977: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/home/couguenoune/.venvs/roombooking/lib/python3.12/site-packages/sqlalchemy/engine/default.py:1192: in do_execute
+    cursor.execute(statement, parameters)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <psycopg.Cursor [closed] [IDLE] (host=localhost port=5434 database=roombooking) at 0x7b0374bab710>
+query = 'INSERT INTO reservations (user_id, room_id, start_time, end_time, purpose, status) VALUES (%(user_id)s::INTEGER, %(ro...IMESTAMP WITH TIME ZONE, %(purpose)s::VARCHAR, %(status)s::VARCHAR) RETURNING reservations.id, reservations.created_at'
+params = {'user_id': 133, 'room_id': 88, 'start_time': datetime.datetime(2026, 11, 28, 2, 38, 23, 57425, tzinfo=datetime.timezone.utc), 'end_time': datetime.datetime(2026, 11, 28, 4, 38, 23, 57425, tzinfo=datetime.timezone.utc), ...}
+prepare = None, binary = None
+
+    def execute(
+        self,
+        query: Query,
+        params: Params | None = None,
+        *,
+        prepare: bool | None = None,
+        binary: bool | None = None,
+    ) -> Self:
+        """
+        Execute a query or command to the database.
+        """
+        try:
+            with self._conn.lock:
+                self._conn.wait(
+                    self._execute_gen(query, params, prepare=prepare, binary=binary)
+                )
+        except e._NO_TRACEBACK as ex:
+>           raise ex.with_traceback(None)
+E           psycopg.errors.DeadlockDetected: deadlock detected
+E           DETAIL:  Process 78297 waits for ShareLock on transaction 1001; blocked by process 78296.
+E           Process 78296 waits for ShareLock on transaction 1002; blocked by process 78297.
+E           HINT:  See server log for query details.
+E           CONTEXT:  while checking exclusion constraint on tuple (0,26) in relation "reservations"
+
+/home/couguenoune/.venvs/roombooking/lib/python3.12/site-packages/psycopg/cursor.py:117: DeadlockDetected
+
+The above exception was the direct cause of the following exception:
+
+    def test_concurrent_booking():
+        unique = uuid4().hex
+    
+        user_ids = []
+        room_id = None
+    
+        try:
+            with SessionLocal() as db:
+                users = [
+                    User(
+                        full_name=f"Concurrency User {i}",
+                        email=f"concurrent-{unique}-{i}@example.com",
+                        password_hash=PasswordHash.recommended().hash(
+                            uuid4().hex
+                        ),
+                        role="user",
+                    )
+                    for i in range(2)
+                ]
+    
+                room = Room(
+                    name=f"Concurrent Room {unique}",
+                    capacity=10,
+                    equipment=[],
+                )
+    
+                db.add_all([*users, room])
+                db.flush()
+    
+                user_ids = [user.id for user in users]
+                room_id = room.id
+    
+                db.commit()
+    
+            start = datetime.now(UTC) + timedelta(days=3)
+            end = start + timedelta(hours=2)
+    
+            barrier = Barrier(2, timeout=15)
+    
+            def attempt_booking(user_id):
+                with SessionLocal() as db:
+                    db.execute(
+                        text("SET LOCAL lock_timeout = '10s'")
+                    )
+    
+                    reservation = Reservation(
+                        user_id=user_id,
+                        room_id=room_id,
+                        start_time=start,
+                        end_time=end,
+                        status="confirmed",
+                    )
+    
+                    db.add(reservation)
+    
+                    barrier.wait()
+    
+                    try:
+                        db.commit()
+                        return "confirmed"
+    
+                    except IntegrityError as exc:
+                        db.rollback()
+    
+                        if getattr(exc.orig, "sqlstate", None) == "23P01":
+                            return "conflict"
+    
+                        raise
+    
+            with ThreadPoolExecutor(max_workers=2) as executor:
+>               results = list(
+                    executor.map(attempt_booking, user_ids)
+                )
+
+tests/test_concurrency.py:85: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/usr/lib/python3.12/concurrent/futures/_base.py:619: in result_iterator
+    yield _result_or_cancel(fs.pop())
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.12/concurrent/futures/_base.py:317: in _result_or_cancel
+    return fut.result(timeout)
+           ^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.12/concurrent/futures/_base.py:449: in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.12/concurrent/futures/_base.py:401: in __get_result
+    raise self._exception
+/usr/lib/python3.12/concurrent/futures/thread.py:58: in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/test_concurrency.py:73: in attempt_booking
+    db.commit()
+/home/couguenoune/.venvs/roombooking/lib/python3.12/site-packages/sqlalchemy/orm/session.py:2177: in commit
+    trans.commit(_to_root=True)
+<sqlalchemy generated _go() wrapper for sqlalchemy.orm.session.SessionTransaction.commit>:2: in commit
+    return target(fn, self, _to_root=_to_root)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/couguenoune/.venvs/roombooking/lib/python3.12/site-packages/sqlalchemy/orm/state_changes.py:137: in _go
+    ret_value = fn(self, *arg, **kw)
+                ^^^^^^^^^^^^^^^^^^^^
+/home/couguenoune/.venvs/roombooking/lib/python3.12/site-packages/sqlalchemy/orm/session.py:1412: in commit
+    self._prepare_impl()
+<sqlalchemy generated _go() wrapper for sqlalchemy.orm.session.SessionTransaction._prepare_impl>:2: in _prepare_impl
+    return target(fn, self)
+           ^^^^^^^^^^^^^^^^
+/home/couguenoune/.venvs/roombooking/lib/python3.12/site-packages/sqlalchemy/orm/state_changes.py:137: in _go
+    ret_value = fn(self, *arg, **kw)
+                ^^^^^^^^^^^^^^^^^^^^
+/home/couguenoune/.venvs/roombooking/lib/python3.12/site-packages/sqlalchemy/orm/session.py:1386: in _prepare_impl
+    self.session.flush()
+/home/couguenoune/.venvs/roombooking/lib/python3.12/site-packages/sqlalchemy/orm/session.py:4626: in flush
+    self._flush(objects)
+<sqlalchemy generated warned() wrapper for sqlalchemy.orm.session.Session._flush>:2: in _flush
+    return target(fn, self, objects=objects)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/couguenoune/.venvs/roombooking/lib/python3.12/site-packages/sqlalchemy/util/deprecations.py:281: in warned
+    return fn(*args, **kwargs)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^
+/home/couguenoune/.venvs/roombooking/lib/python3.12/site-packages/sqlalchemy/orm/session.py:4769: in _flush
+    with util.safe_reraise():
+/home/couguenoune/.venvs/roombooking/lib/python3.12/site-packages/sqlalchemy/util/langhelpers.py:166: in __exit__
+    raise exc_value.with_traceback(exc_tb)
+/home/couguenoune/.venvs/roombooking/lib/python3.12/site-packages/sqlalchemy/orm/session.py:4730: in _flush
+    flush_context.execute()
+/home/couguenoune/.venvs/roombooking/lib/python3.12/site-packages/sqlalchemy/orm/unitofwork.py:467: in execute
+    rec.execute(self)
+/home/couguenoune/.venvs/roombooking/lib/python3.12/site-packages/sqlalchemy/orm/unitofwork.py:643: in execute
+    util.preloaded.orm_persistence._save_obj(
+/home/couguenoune/.venvs/roombooking/lib/python3.12/site-packages/sqlalchemy/orm/persistence.py:92: in _save_obj
+    _emit_insert_statements(
+/home/couguenoune/.venvs/roombooking/lib/python3.12/site-packages/sqlalchemy/orm/persistence.py:1250: in _emit_insert_statements
+    result = connection.execute(
+/home/couguenoune/.venvs/roombooking/lib/python3.12/site-packages/sqlalchemy/engine/base.py:1494: in execute
+    return meth(
+/home/couguenoune/.venvs/roombooking/lib/python3.12/site-packages/sqlalchemy/sql/elements.py:534: in _execute_on_connection
+    return connection._execute_clauseelement(
+/home/couguenoune/.venvs/roombooking/lib/python3.12/site-packages/sqlalchemy/engine/base.py:1714: in _execute_clauseelement
+    ret = self._execute_context(
+/home/couguenoune/.venvs/roombooking/lib/python3.12/site-packages/sqlalchemy/engine/base.py:1868: in _execute_context
+    return self._exec_single_context(
+/home/couguenoune/.venvs/roombooking/lib/python3.12/site-packages/sqlalchemy/engine/base.py:1996: in _exec_single_context
+    self._handle_dbapi_exception(
+/home/couguenoune/.venvs/roombooking/lib/python3.12/site-packages/sqlalchemy/engine/base.py:2351: in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+/home/couguenoune/.venvs/roombooking/lib/python3.12/site-packages/sqlalchemy/engine/base.py:1977: in _exec_single_context
+    self.dialect.do_execute(
+/home/couguenoune/.venvs/roombooking/lib/python3.12/site-packages/sqlalchemy/engine/default.py:1192: in do_execute
+    cursor.execute(statement, parameters)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <psycopg.Cursor [closed] [IDLE] (host=localhost port=5434 database=roombooking) at 0x7b0374bab710>
+query = 'INSERT INTO reservations (user_id, room_id, start_time, end_time, purpose, status) VALUES (%(user_id)s::INTEGER, %(ro...IMESTAMP WITH TIME ZONE, %(purpose)s::VARCHAR, %(status)s::VARCHAR) RETURNING reservations.id, reservations.created_at'
+params = {'user_id': 133, 'room_id': 88, 'start_time': datetime.datetime(2026, 11, 28, 2, 38, 23, 57425, tzinfo=datetime.timezone.utc), 'end_time': datetime.datetime(2026, 11, 28, 4, 38, 23, 57425, tzinfo=datetime.timezone.utc), ...}
+prepare = None, binary = None
+
+    def execute(
+        self,
+        query: Query,
+        params: Params | None = None,
+        *,
+        prepare: bool | None = None,
+        binary: bool | None = None,
+    ) -> Self:
+        """
+        Execute a query or command to the database.
+        """
+        try:
+            with self._conn.lock:
+                self._conn.wait(
+                    self._execute_gen(query, params, prepare=prepare, binary=binary)
+                )
+        except e._NO_TRACEBACK as ex:
+>           raise ex.with_traceback(None)
+E           sqlalchemy.exc.OperationalError: (psycopg.errors.DeadlockDetected) deadlock detected
+E           DETAIL:  Process 78297 waits for ShareLock on transaction 1001; blocked by process 78296.
+E           Process 78296 waits for ShareLock on transaction 1002; blocked by process 78297.
+E           HINT:  See server log for query details.
+E           CONTEXT:  while checking exclusion constraint on tuple (0,26) in relation "reservations"
+E           [SQL: INSERT INTO reservations (user_id, room_id, start_time, end_time, purpose, status) VALUES (%(user_id)s::INTEGER, %(room_id)s::INTEGER, %(start_time)s::TIMESTAMP WITH TIME ZONE, %(end_time)s::TIMESTAMP WITH TIME ZONE, %(purpose)s::VARCHAR, %(status)s::VARCHAR) RETURNING reservations.id, reservations.created_at]
+E           [parameters: {'user_id': 133, 'room_id': 88, 'start_time': datetime.datetime(2026, 11, 28, 2, 38, 23, 57425, tzinfo=datetime.timezone.utc), 'end_time': datetime.datetime(2026, 11, 28, 4, 38, 23, 57425, tzinfo=datetime.timezone.utc), 'purpose': None, 'status': 'confirmed'}]
+E           (Background on this error at: https://sqlalche.me/e/21/e3q8)
+
+/home/couguenoune/.venvs/roombooking/lib/python3.12/site-packages/psycopg/cursor.py:117: OperationalError
+============================= slowest 10 durations =============================
+1.31s call     tests/test_concurrency.py::test_concurrent_booking
+0.25s call     tests/test_auth.py::test_password_hashing
+0.24s call     tests/test_auth.py::test_register_user
+0.12s setup    tests/test_reservations.py::test_valid_reservation
+0.12s setup    tests/test_auth.py::test_inactive_user_token_rejected
+0.10s setup    tests/test_auth.py::test_password_is_hashed_in_database
+0.10s setup    tests/test_auth.py::test_duplicate_email_rejected
+0.09s setup    tests/test_reservations_api.py::test_create_booking
+0.09s call     tests/test_auth.py::test_unknown_user_rejected
+0.09s setup    tests/test_reservations.py::test_invalid_time_range_rejected
+=========================== short test summary info ============================
+FAILED tests/test_concurrency.py::test_concurrent_booking - sqlalchemy.exc.Op...
+========================= 1 failed, 55 passed in 6.43s =========================

@@ -1,0 +1,37 @@
+ .gitignore                             | 102 [32m+++++[m[31m------[m
+ README.md                              | 224 [32m+++++++++++[m[31m------------[m
+ backend/README.md                      | 298 [32m+++++++++++++++[m[31m----------------[m
+ backend/app/api/routes/admin.py        | 180 [32m+++++++++[m[31m----------[m
+ backend/app/api/routes/auth.py         | 324 [32m++++++++++++++++[m[31m-----------------[m
+ backend/app/api/routes/reservations.py | 426 [32m+++++++++++++++++++++[m[31m----------------------[m
+ backend/app/api/routes/rooms.py        | 450 [32m+++++++++++++++++++++++[m[31m-----------------------[m
+ backend/app/core/config.py             |  66 [32m+++[m[31m----[m
+ backend/app/core/database.py           |  62 [32m+++[m[31m----[m
+ backend/app/core/dependencies.py       | 142 [32m+++++++[m[31m--------[m
+ backend/app/core/logging.py            | 102 [32m+++++[m[31m------[m
+ backend/app/core/security.py           | 146 [32m+++++++[m[31m--------[m
+ backend/app/create_admin.py            | 128 [32m++++++[m[31m-------[m
+ backend/app/main.py                    | 142 [32m+++++++[m[31m--------[m
+ backend/app/models/__init__.py         |  20 [32m+[m[31m--[m
+ backend/app/models/document.py         | 116 [32m++++++[m[31m------[m
+ backend/app/models/reservation.py      | 200 [32m++++++++++[m[31m-----------[m
+ backend/app/models/room.py             | 128 [32m++++++[m[31m-------[m
+ backend/app/models/user.py             | 104 [32m+++++[m[31m------[m
+ backend/app/schemas/auth.py            | 134 [32m+++++++[m[31m-------[m
+ backend/app/schemas/reservation.py     | 102 [32m+++++[m[31m------[m
+ backend/app/schemas/room.py            | 112 [32m++++++[m[31m------[m
+ backend/app/seed.py                    | 148 [32m+++++++[m[31m--------[m
+ backend/requirements.txt               | 102 [32m+++++[m[31m------[m
+ backend/tests/conftest.py              | 230 [32m++++++++++++[m[31m------------[m
+ backend/tests/test_auth.py             | 714 [32m++++++++++++++++++++++++++++++++++++[m[31m-------------------------------------[m
+ backend/tests/test_concurrency.py      | 282 [32m++++++++++++++++[m[31m-------------[m
+ backend/tests/test_reservations.py     | 376 [32m+++++++++++++++++++[m[31m-------------------[m
+ backend/tests/test_reservations_api.py | 610 [32m+++++++++++++++++++++++++++++++[m[31m-------------------------------[m
+ backend/tests/test_rooms_api.py        | 346 [32m+++++++++++++++++[m[31m------------------[m
+ docker-compose.yml                     |  70 [32m++++[m[31m----[m
+ docs/api-business.md                   | 384 [32m+++++++++++++++++++[m[31m--------------------[m
+ docs/architecture/backend.md           | 148 [32m+++++++[m[31m--------[m
+ docs/database.md                       | 140 [32m+++++++[m[31m--------[m
+ docs/security_auth.md                  | 176 [32m+++++++++[m[31m---------[m
+ frontend/.gitkeep                      |   0
+ 36 files changed, 3733 insertions(+), 3701 deletions(-)

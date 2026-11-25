@@ -1,0 +1,17 @@
+============================= test session starts ==============================
+platform linux -- Python 3.12.3, pytest-9.2.0, pluggy-1.7.0 -- /home/couguenoune/.venvs/roombooking/bin/python
+cachedir: .pytest_cache
+rootdir: /mnt/c/users/c.ouguenoune/Desktop/cours/cloud/backend
+plugins: anyio-4.16.0
+collecting ... collected 1 item
+
+tests/test_concurrency_api.py::test_concurrent_booking_api {"timestamp": "2026-11-25T02:43:10.932003+00:00", "service": "roombooking-api", "category": "security", "event": "reservation_created", "outcome": "success", "user_id": 249, "client_ip": "testclient"}
+
+Concurrent API responses:
+HTTP 409: {"detail":"Room already booked for this time slot"}
+HTTP 201: {"id":147,"user_id":249,"room_id":164,"start_time":"2026-11-28T02:43:10.852222Z","end_time":"2026-11-28T04:43:10.852222Z","purpose":"Concurrent API booking test","status":"confirmed","created_at":"2026-11-25T02:43:10.901134Z"}
+Confirmed reservations in database: 1
+Concurrent HTTP booking protection validated.
+PASSED
+
+============================== 1 passed in 0.62s ===============================

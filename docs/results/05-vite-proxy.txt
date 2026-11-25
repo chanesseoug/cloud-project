@@ -1,0 +1,40 @@
+=== FASTAPI LIVENESS ===
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    18  100    18    0     0   2440      0 --:--:-- --:--:-- --:--:--  2571
+HTTP/1.1 200 OK
+Vary: Origin
+date: Wed, 25 Nov 2026 02:36:33 GMT
+server: uvicorn
+content-length: 18
+content-type: application/json
+connection: close
+
+{"status":"alive"}
+=== FASTAPI READINESS ===
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    41  100    41    0     0   4830      0 --:--:-- --:--:-- --:--:--  5125
+HTTP/1.1 200 OK
+Vary: Origin
+date: Wed, 25 Nov 2026 02:36:33 GMT
+server: uvicorn
+content-length: 41
+content-type: application/json
+connection: close
+
+{"status":"ready","database":"connected"}
+=== PROTECTION JWT ===
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    30  100    30    0     0   1174      0 --:--:-- --:--:-- --:--:--  1200
+HTTP/1.1 401 Unauthorized
+Vary: Origin
+date: Wed, 25 Nov 2026 02:36:33 GMT
+server: uvicorn
+www-authenticate: Bearer
+content-length: 30
+content-type: application/json
+connection: close
+
+{"detail":"Not authenticated"}
