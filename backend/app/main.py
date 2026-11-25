@@ -4,14 +4,26 @@ from prometheus_fastapi_instrumentator import Instrumentator
 from sqlalchemy import text
 from sqlalchemy.exc import SQLAlchemyError
 
+from app.api.routes import admin, auth
 from app.core.config import settings
 from app.core.database import engine
 
 app = FastAPI(
     title=settings.app_name,
     description="Cloud-native room booking REST API",
-    version="0.1.0",
+    version="0.2.0",
     debug=settings.debug,
+)
+
+
+app.include_router(
+    auth.router,
+    prefix="/api/v1",
+)
+
+app.include_router(
+    admin.router,
+    prefix="/api/v1",
 )
 
 
@@ -19,7 +31,7 @@ app = FastAPI(
 def root():
     return {
         "application": settings.app_name,
-        "version": "0.1.0",
+        "version": "0.2.0",
         "environment": settings.app_env,
         "status": "running",
     }
