@@ -1,10 +1,10 @@
 
 from fastapi import APIRouter, Query, Request
-from sqlalchemy import select
+from sqlalchemy import func, select
 
 from app.core.dependencies import AdminUser, DbSession
 from app.core.logging import log_security_event
-from app.models import User
+from app.models import Reservation, Room, User
 from app.schemas.auth import UserResponse
 
 router = APIRouter(
@@ -43,3 +43,48 @@ def list_users(
     )
 
     return users
+
+
+@router.get("/stats")
+def get_statistics(
+    admin: AdminUser,
+    db: DbSession,
+):
+    total_users = db.scalar(
+        select(func.count(User.id))
+    )
+
+    total_rooms = db.scalar(
+        select(func.count(Room.id))
+    )
+
+    active_rooms = db.scalar(
+        select(func.count(Room.id)).where(
+            Room.is_active.is_(True)
+        )
+    )
+
+    total_reservations = db.scalar(
+        select(func.count(Reservation.id))
+    )
+
+    confirmed_reservations = db.scalar(
+        select(func.count(Reservation.id)).where(
+            Reservation.status == "confirmed"
+        )
+    )
+
+    cancelled_reservations = db.scalar(
+        select(func.count(Reservation.id)).where(
+            Reservation.status == "cancelled"
+        )
+    )
+
+    return {
+        "total_users": total_users,
+        "total_rooms": total_rooms,
+        "active_rooms": active_rooms,
+        "total_reservations": total_reservations,
+        "confirmed_reservations": confirmed_reservations,
+        "cancelled_reservations": cancelled_reservations,
+    }

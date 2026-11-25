@@ -59,6 +59,54 @@ réservation de salles de réunion.
 - scripts/ : scripts d'automatisation
 - docs/ : documentation technique
 
+
 ## État du projet
 
-En cours de développement.
+Version actuelle : 0.3.0
+
+### Progression
+
+- [x] Initialisation du projet
+- [x] Fondations du back-end FastAPI
+- [x] Base de données PostgreSQL
+- [x] Modèles SQLAlchemy et migrations Alembic
+- [x] Authentification JWT et Argon2id
+- [x] Gestion des permissions RBAC
+- [x] API métier de réservation
+- [x] Tests automatisés du back-end
+- [ ] Interface utilisateur React
+- [ ] Stockage objet MinIO / S3
+- [ ] Traitement asynchrone Redis / Celery
+- [ ] Conteneurisation Docker complète
+- [ ] Orchestration Kubernetes
+- [ ] Infrastructure Terraform
+- [ ] Pipeline CI/CD
+- [ ] Observabilité et supervision
+- [ ] Sécurité cloud et ISO 27001
+- [ ] Optimisation FinOps
+- [ ] Rapport académique final
+
+## Validation du back-end
+
+| Indicateur | Résultat |
+|---|---|
+| Tests automatisés | 56/56 |
+| Tests manuels API métier | 10/10 |
+| Tests manuels authentification | 9/9 |
+| Analyse Ruff | Validée |
+| Vérification Alembic | Validée |
+| Protection contre les doubles réservations | Validée |
+| Test de concurrence PostgreSQL | Validé |
+
+## Documentation technique
+
+- [Installation du backend](backend/README.md)
+- [Architecture de la base de données](docs/database.md)
+- [Authentification et sécurité](docs/security-auth.md)
+- [Documentation API métier](docs/api-business.md)
+
+## Prochaine étape
+
+Développement de l'interface utilisateur React
+avec TypeScript.
+
