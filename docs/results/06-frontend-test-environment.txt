@@ -1,0 +1,16 @@
+=== NODE VERSION ===
+v20.19.5
+
+=== NPM VERSION ===
+10.8.2
+
+=== VITEST VERSION ===
+vitest/4.1.12 linux-x64 node-v20.19.5
+
+=== BUILD SIZE ===
+400K	dist/
+
+=== BUILD ASSETS ===
+total 376K
+-rwxrwxrwx 1 couguenoune couguenoune  24K Nov 27 00:33 index-Ch38Xio8.css
+-rwxrwxrwx 1 couguenoune couguenoune 349K Nov 27 00:33 index-D4q2v-1K.js

@@ -13,6 +13,8 @@ interface AuthLayoutProps {
   children: ReactNode
 }
 
+const CURRENT_YEAR = new Date().getFullYear()
+
 const features = [
   {
     icon: CalendarDays,
@@ -143,7 +145,7 @@ export function AuthLayout({
           {children}
 
           <p className="mt-12 text-center text-xs text-slate-400">
-            RoomBooking © {new Date().getFullYear()}
+            RoomBooking © {CURRENT_YEAR}
             {' '}· Projet cloud-native BC3
           </p>
 

@@ -1,0 +1,156 @@
+=== TESTS VITEST ===
+ [32m✓[39m src/tests/token.test.ts[2m > [22mJWT token utilities[2m > [22maccepts a non-expired token[32m 0[2mms[22m[39m
+ [32m✓[39m src/tests/token.test.ts[2m > [22mJWT token utilities[2m > [22mreturns the token expiration timestamp[32m 0[2mms[22m[39m
+ [32m✓[39m src/tests/client.test.ts[2m > [22mAxios API client[2m > [22muses the relative API base URL[32m 4[2mms[22m[39m
+ [32m✓[39m src/tests/client.test.ts[2m > [22mAxios API client[2m > [22mattaches the Bearer token automatically[32m 5[2mms[22m[39m
+ [32m✓[39m src/tests/client.test.ts[2m > [22mAxios API client[2m > [22mdoes not send Authorization without a token[32m 1[2mms[22m[39m
+ [32m✓[39m src/tests/client.test.ts[2m > [22mAxios API client[2m > [22mremoves an expired token before a request[32m 2[2mms[22m[39m
+ [32m✓[39m src/tests/client.test.ts[2m > [22mAxios API client[2m > [22mclears the session after an authenticated 401[32m 7[2mms[22m[39m
+ [32m✓[39m src/tests/client.test.ts[2m > [22mAxios API client[2m > [22mpreserves the session after a 403 response[32m 2[2mms[22m[39m
+ [32m✓[39m src/tests/client.test.ts[2m > [22mAxios API client[2m > [22mreturns a readable message for network failures[32m 1[2mms[22m[39m
+
+[2m Test Files [22m [1m[32m9 passed[39m[22m[90m (9)[39m
+[2m      Tests [22m [1m[32m45 passed[39m[22m[90m (45)[39m
+[2m   Start at [22m 00:29:15
+[2m   Duration [22m 35.68s[2m (transform 5.27s, setup 49.75s, import 22.92s, tests 7.85s, environment 166.81s)[22m
+
+
+=== COUVERTURE ===
+
+> frontend@0.0.0 test:coverage
+> vitest run --coverage
+
+
+[1m[30m[46m RUN [49m[39m[22m [36mv4.1.12 [39m[90m/mnt/c/users/c.ouguenoune/Desktop/cours/cloud/frontend[39m
+      [2mCoverage enabled with [22m[33mv8[39m
+
+ [32m✓[39m src/tests/Input.test.tsx [2m([22m[2m3 tests[22m[2m)[22m[33m 366[2mms[22m[39m
+ [32m✓[39m src/tests/ProtectedRoute.test.tsx [2m([22m[2m3 tests[22m[2m)[22m[33m 314[2mms[22m[39m
+ [32m✓[39m src/tests/AuthContext.test.tsx [2m([22m[2m8 tests[22m[2m)[22m[33m 305[2mms[22m[39m
+ [32m✓[39m src/tests/client.test.ts [2m([22m[2m7 tests[22m[2m)[22m[32m 32[2mms[22m[39m
+ [32m✓[39m src/tests/auth.test.ts [2m([22m[2m3 tests[22m[2m)[22m[32m 25[2mms[22m[39m
+ [32m✓[39m src/tests/RegisterPage.test.tsx [2m([22m[2m6 tests[22m[2m)[22m[33m 6694[2mms[22m[39m
+     [33m[2m✓[22m[39m creates a valid user and redirects to login [33m 1781[2mms[22m[39m
+     [33m[2m✓[22m[39m rejects an empty full name [33m 804[2mms[22m[39m
+     [33m[2m✓[22m[39m rejects an invalid email address [33m 965[2mms[22m[39m
+     [33m[2m✓[22m[39m rejects a password shorter than 12 characters [33m 770[2mms[22m[39m
+     [33m[2m✓[22m[39m rejects a different password confirmation [33m 1219[2mms[22m[39m
+     [33m[2m✓[22m[39m displays the API error for a duplicate email [33m 1151[2mms[22m[39m
+ [32m✓[39m src/tests/LoginPage.test.tsx [2m([22m[2m5 tests[22m[2m)[22m[33m 1689[2mms[22m[39m
+     [33m[2m✓[22m[39m renders the login form [33m 392[2mms[22m[39m
+     [33m[2m✓[22m[39m redirects to the dashboard after a valid login [33m 701[2mms[22m[39m
+     [33m[2m✓[22m[39m displays an error after invalid credentials [33m 509[2mms[22m[39m
+ [32m✓[39m src/tests/AdminRoute.test.tsx [2m([22m[2m2 tests[22m[2m)[22m[32m 115[2mms[22m[39m
+ [32m✓[39m src/tests/token.test.ts [2m([22m[2m8 tests[22m[2m)[22m[32m 13[2mms[22m[39m
+
+[2m Test Files [22m [1m[32m9 passed[39m[22m[90m (9)[39m
+[2m      Tests [22m [1m[32m45 passed[39m[22m[90m (45)[39m
+[2m   Start at [22m 00:30:13
+[2m   Duration [22m 39.95s[2m (transform 4.49s, setup 46.05s, import 25.21s, tests 9.55s, environment 170.88s)[22m
+
+[34m % [39m[2mCoverage report from [22m[33mv8[39m
+-------------------|---------|----------|---------|---------|-------------------
+File               | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
+-------------------|---------|----------|---------|---------|-------------------
+All files          |   71.76 |    64.58 |   77.41 |   73.42 |                   
+ api               |   81.63 |    57.57 |     100 |   81.63 |                   
+  auth.ts          |     100 |      100 |     100 |     100 |                   
+  client.ts        |   76.92 |    57.57 |     100 |   76.92 | 86,90,99-112      
+ components        |     100 |      100 |     100 |     100 |                   
+  AdminRoute.tsx   |     100 |      100 |     100 |     100 |                   
+  ...ctedRoute.tsx |     100 |      100 |     100 |     100 |                   
+ components/layout |     100 |      100 |     100 |     100 |                   
+  AuthLayout.tsx   |     100 |      100 |     100 |     100 |                   
+ components/ui     |     100 |      100 |     100 |     100 |                   
+  Button.tsx       |     100 |      100 |     100 |     100 |                   
+  Input.tsx        |     100 |      100 |     100 |     100 |                   
+ context           |   86.11 |    58.33 |   93.75 |   85.91 |                   
+  AuthContext.tsx  |   85.91 |    58.33 |   93.75 |   85.71 | ...65,174,186-187 
+  auth-context.ts  |     100 |      100 |     100 |     100 |                   
+ hooks             |      75 |       50 |     100 |      75 |                   
+  useAuth.ts       |      75 |       50 |     100 |      75 | 10                
+ pages             |       0 |        0 |       0 |       0 |                   
+  ...boardPage.tsx |       0 |        0 |       0 |       0 | 18-24             
+  HealthPage.tsx   |       0 |        0 |       0 |       0 | 24-203            
+ pages/admin       |       0 |        0 |       0 |       0 |                   
+  AdminPage.tsx    |       0 |        0 |       0 |       0 | 30-159            
+ pages/auth        |   92.64 |     91.3 |     100 |   95.45 |                   
+  LoginPage.tsx    |    87.5 |     87.5 |     100 |    91.3 | 50-54             
+  RegisterPage.tsx |   95.45 |    93.33 |     100 |   97.67 | 146               
+ utils             |   95.23 |     90.9 |     100 |   95.23 |                   
+  token.ts         |   95.23 |     90.9 |     100 |   95.23 | 44                
+-------------------|---------|----------|---------|---------|-------------------
+
+=== COUVERTURE JSON ===
+{"total": {"lines":{"total":286,"covered":210,"skipped":0,"pct":73.42},"statements":{"total":294,"covered":211,"skipped":0,"pct":71.76},"functions":{"total":62,"covered":48,"skipped":0,"pct":77.41},"branches":{"total":192,"covered":124,"skipped":0,"pct":64.58},"branchesTrue":{"total":0,"covered":0,"skipped":0,"pct":100}}
+,"/mnt/c/users/c.ouguenoune/Desktop/cours/cloud/frontend/src/api/auth.ts": {"lines":{"total":10,"covered":10,"skipped":0,"pct":100},"functions":{"total":3,"covered":3,"skipped":0,"pct":100},"statements":{"total":10,"covered":10,"skipped":0,"pct":100},"branches":{"total":0,"covered":0,"skipped":0,"pct":100}}
+,"/mnt/c/users/c.ouguenoune/Desktop/cours/cloud/frontend/src/api/client.ts": {"lines":{"total":39,"covered":30,"skipped":0,"pct":76.92},"functions":{"total":4,"covered":4,"skipped":0,"pct":100},"statements":{"total":39,"covered":30,"skipped":0,"pct":76.92},"branches":{"total":33,"covered":19,"skipped":0,"pct":57.57}}
+,"/mnt/c/users/c.ouguenoune/Desktop/cours/cloud/frontend/src/components/AdminRoute.tsx": {"lines":{"total":4,"covered":4,"skipped":0,"pct":100},"functions":{"total":1,"covered":1,"skipped":0,"pct":100},"statements":{"total":4,"covered":4,"skipped":0,"pct":100},"branches":{"total":2,"covered":2,"skipped":0,"pct":100}}
+,"/mnt/c/users/c.ouguenoune/Desktop/cours/cloud/frontend/src/components/ProtectedRoute.tsx": {"lines":{"total":6,"covered":6,"skipped":0,"pct":100},"functions":{"total":1,"covered":1,"skipped":0,"pct":100},"statements":{"total":6,"covered":6,"skipped":0,"pct":100},"branches":{"total":4,"covered":4,"skipped":0,"pct":100}}
+,"/mnt/c/users/c.ouguenoune/Desktop/cours/cloud/frontend/src/components/layout/AuthLayout.tsx": {"lines":{"total":4,"covered":4,"skipped":0,"pct":100},"functions":{"total":2,"covered":2,"skipped":0,"pct":100},"statements":{"total":4,"covered":4,"skipped":0,"pct":100},"branches":{"total":0,"covered":0,"skipped":0,"pct":100}}
+,"/mnt/c/users/c.ouguenoune/Desktop/cours/cloud/frontend/src/components/ui/Button.tsx": {"lines":{"total":2,"covered":2,"skipped":0,"pct":100},"functions":{"total":1,"covered":1,"skipped":0,"pct":100},"statements":{"total":2,"covered":2,"skipped":0,"pct":100},"branches":{"total":7,"covered":7,"skipped":0,"pct":100}}
+,"/mnt/c/users/c.ouguenoune/Desktop/cours/cloud/frontend/src/components/ui/Input.tsx": {"lines":{"total":7,"covered":7,"skipped":0,"pct":100},"functions":{"total":2,"covered":2,"skipped":0,"pct":100},"statements":{"total":7,"covered":7,"skipped":0,"pct":100},"branches":{"total":25,"covered":25,"skipped":0,"pct":100}}
+,"/mnt/c/users/c.ouguenoune/Desktop/cours/cloud/frontend/src/context/AuthContext.tsx": {"lines":{"total":70,"covered":60,"skipped":0,"pct":85.71},"functions":{"total":16,"covered":15,"skipped":0,"pct":93.75},"statements":{"total":71,"covered":61,"skipped":0,"pct":85.91},"branches":{"total":24,"covered":14,"skipped":0,"pct":58.33}}
+,"/mnt/c/users/c.ouguenoune/Desktop/cours/cloud/frontend/src/context/auth-context.ts": {"lines":{"total":1,"covered":1,"skipped":0,"pct":100},"functions":{"total":0,"covered":0,"skipped":0,"pct":100},"statements":{"total":1,"covered":1,"skipped":0,"pct":100},"branches":{"total":0,"covered":0,"skipped":0,"pct":100}}
+,"/mnt/c/users/c.ouguenoune/Desktop/cours/cloud/frontend/src/hooks/useAuth.ts": {"lines":{"total":4,"covered":3,"skipped":0,"pct":75},"functions":{"total":1,"covered":1,"skipped":0,"pct":100},"statements":{"total":4,"covered":3,"skipped":0,"pct":75},"branches":{"total":2,"covered":1,"skipped":0,"pct":50}}
+,"/mnt/c/users/c.ouguenoune/Desktop/cours/cloud/frontend/src/pages/DashboardPage.tsx": {"lines":{"total":4,"covered":0,"skipped":0,"pct":0},"functions":{"total":1,"covered":0,"skipped":0,"pct":0},"statements":{"total":4,"covered":0,"skipped":0,"pct":0},"branches":{"total":6,"covered":0,"skipped":0,"pct":0}}
+,"/mnt/c/users/c.ouguenoune/Desktop/cours/cloud/frontend/src/pages/HealthPage.tsx": {"lines":{"total":30,"covered":0,"skipped":0,"pct":0},"functions":{"total":7,"covered":0,"skipped":0,"pct":0},"statements":{"total":34,"covered":0,"skipped":0,"pct":0},"branches":{"total":20,"covered":0,"skipped":0,"pct":0}}
+,"/mnt/c/users/c.ouguenoune/Desktop/cours/cloud/frontend/src/pages/admin/AdminPage.tsx": {"lines":{"total":18,"covered":0,"skipped":0,"pct":0},"functions":{"total":5,"covered":0,"skipped":0,"pct":0},"statements":{"total":19,"covered":0,"skipped":0,"pct":0},"branches":{"total":12,"covered":0,"skipped":0,"pct":0}}
+,"/mnt/c/users/c.ouguenoune/Desktop/cours/cloud/frontend/src/pages/auth/LoginPage.tsx": {"lines":{"total":23,"covered":21,"skipped":0,"pct":91.3},"functions":{"total":4,"covered":4,"skipped":0,"pct":100},"statements":{"total":24,"covered":21,"skipped":0,"pct":87.5},"branches":{"total":16,"covered":14,"skipped":0,"pct":87.5}}
+,"/mnt/c/users/c.ouguenoune/Desktop/cours/cloud/frontend/src/pages/auth/RegisterPage.tsx": {"lines":{"total":43,"covered":42,"skipped":0,"pct":97.67},"functions":{"total":8,"covered":8,"skipped":0,"pct":100},"statements":{"total":44,"covered":42,"skipped":0,"pct":95.45},"branches":{"total":30,"covered":28,"skipped":0,"pct":93.33}}
+,"/mnt/c/users/c.ouguenoune/Desktop/cours/cloud/frontend/src/utils/token.ts": {"lines":{"total":21,"covered":20,"skipped":0,"pct":95.23},"functions":{"total":6,"covered":6,"skipped":0,"pct":100},"statements":{"total":21,"covered":20,"skipped":0,"pct":95.23},"branches":{"total":11,"covered":10,"skipped":0,"pct":90.9}}
+}
+
+=== OXLINT ===
+
+> frontend@0.0.0 lint
+> oxlint
+
+
+  ! react(purity): Cannot call impure function during render
+     ,-[src/components/layout/AuthLayout.tsx:146:29]
+ 145 |           <p className="mt-12 text-center text-xs text-slate-400">
+ 146 |             RoomBooking © {new Date().getFullYear()}
+     :                            ^^^^^|^^^^
+     :                                 `-- Cannot call impure function
+ 147 |             {' '}· Projet cloud-native BC3
+     `----
+  help: `Date` is an impure function. Calling an impure function can produce unstable results that update unpredictably when the component re-renders
+  note: React Compiler skipped optimizing this component or hook. Additional guidance: https://react.dev/reference/eslint-plugin-react-hooks/lints/purity
+
+Found 1 warning and 0 errors.
+Finished in 272ms on 32 files with 116 rules using 14 threads.
+
+=== BUILD ===
+
+> frontend@0.0.0 build
+> tsc -b && vite build
+
+vite v8.3.8 building client environment for production...
+transforming...
+✓ 2217 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                   0.70 kB │ gzip:   0.39 kB
+dist/assets/index-Ch38Xio8.css   24.29 kB │ gzip:   5.46 kB
+dist/assets/index-D4q2v-1K.js   356.90 kB │ gzip: 116.15 kB
+
+✓ built in 10.30s
+
+=== ENVIRONNEMENT ===
+=== NODE VERSION ===
+v20.19.5
+
+=== NPM VERSION ===
+10.8.2
+
+=== VITEST VERSION ===
+vitest/4.1.12 linux-x64 node-v20.19.5
+
+=== BUILD SIZE ===
+400K	dist/
+
+=== BUILD ASSETS ===
+total 376K
+-rwxrwxrwx 1 couguenoune couguenoune  24K Nov 27 00:33 index-Ch38Xio8.css
+-rwxrwxrwx 1 couguenoune couguenoune 349K Nov 27 00:33 index-D4q2v-1K.js
