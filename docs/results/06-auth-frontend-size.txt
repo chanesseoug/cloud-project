@@ -1,0 +1,7 @@
+=== TAILLE DU BUILD ===
+400K	dist/
+
+=== RESSOURCES COMPILEES ===
+total 376K
+-rwxrwxrwx 1 couguenoune couguenoune  24K Nov 26 23:53 index-Ch38Xio8.css
+-rwxrwxrwx 1 couguenoune couguenoune 349K Nov 26 23:53 index-D4q2v-1K.js

@@ -1,0 +1,18 @@
+
+> frontend@0.0.0 lint
+> oxlint
+
+
+  ! react(purity): Cannot call impure function during render
+     ,-[src/components/layout/AuthLayout.tsx:146:29]
+ 145 |           <p className="mt-12 text-center text-xs text-slate-400">
+ 146 |             RoomBooking © {new Date().getFullYear()}
+     :                            ^^^^^|^^^^
+     :                                 `-- Cannot call impure function
+ 147 |             {' '}· Projet cloud-native BC3
+     `----
+  help: `Date` is an impure function. Calling an impure function can produce unstable results that update unpredictably when the component re-renders
+  note: React Compiler skipped optimizing this component or hook. Additional guidance: https://react.dev/reference/eslint-plugin-react-hooks/lints/purity
+
+Found 1 warning and 0 errors.
+Finished in 406ms on 20 files with 116 rules using 14 threads.
