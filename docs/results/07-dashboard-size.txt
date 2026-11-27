@@ -1,0 +1,7 @@
+=== BUILD SIZE ===
+436K	dist/
+
+=== BUILD ASSETS ===
+total 412K
+-rwxrwxrwx 1 couguenoune couguenoune 372K Nov 27 01:02 index-Dpv7BI3C.js
+-rwxrwxrwx 1 couguenoune couguenoune  37K Nov 27 01:02 index-lCIQrUgE.css

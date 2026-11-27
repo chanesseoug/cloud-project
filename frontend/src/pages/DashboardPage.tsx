@@ -1,161 +1,257 @@
 
+import { useState } from 'react'
+
 import { Link } from 'react-router-dom'
 
 import {
   DoorOpen,
-  LogOut,
-  ShieldCheck,
-  UserRound,
-  Mail,
   CheckCircle2,
-  ArrowRight,
+  CalendarCheck,
+  Clock,
+  Plus,
+  RefreshCw,
+  ArrowUpRight,
+  CalendarDays,
 } from 'lucide-react'
 
 import { useAuth } from '../hooks/useAuth'
+import { useDashboard } from '../hooks/useDashboard'
+
+import {
+  getGreeting,
+  formatDateTime,
+  formatTime,
+} from '../utils/format'
+
+import {
+  StatCard,
+} from '../components/dashboard/StatCard'
+
+import {
+  RoomPreview,
+} from '../components/dashboard/RoomPreview'
+
+import {
+  UpcomingReservations,
+} from '../components/dashboard/UpcomingReservations'
+
+import {
+  LoadingState,
+} from '../components/ui/LoadingState'
+
+import {
+  ErrorState,
+} from '../components/ui/ErrorState'
+
 import { Button } from '../components/ui/Button'
 
 export default function DashboardPage() {
-  const { user, isAdmin, logout } = useAuth()
+  const { user } = useAuth()
 
-  if (!user) {
-    return null
-  }
+  const {
+    data,
+    error,
+    isLoading,
+    refresh,
+  } = useDashboard()
+
+  const [greeting] = useState(
+    () => getGreeting(),
+  )
+
+  const firstName =
+    user?.full_name.trim().split(/\s+/)[0] ||
+    'utilisateur'
 
   return (
-    <main className="min-h-screen bg-slate-50">
+    <div className="space-y-7">
 
-      <header className="border-b border-slate-200 bg-white">
+      <div className="flex flex-col justify-between gap-5 md:flex-row md:items-center">
 
-        <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-5 py-5">
-
-          <div className="flex items-center gap-3">
-
-            <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-brand-600 text-white">
-              <DoorOpen size={24} />
-            </div>
-
-            <span className="font-bold tracking-tight text-slate-900 sm:text-xl">
-              RoomBooking
-              <span className="text-brand-600">.</span>
-            </span>
-
-          </div>
-
-          <Button
-            variant="secondary"
-            onClick={logout}
-          >
-            <LogOut size={17} />
-
-            <span className="hidden sm:inline">
-              Déconnexion
-            </span>
-          </Button>
-
-        </div>
-
-      </header>
-
-      <div className="mx-auto max-w-6xl px-5 py-10 sm:py-16">
-
-        <div className="rounded-3xl bg-slate-950 p-8 text-white sm:p-12">
-
-          <span className="inline-flex items-center gap-2 rounded-full bg-white/10 px-3 py-1 text-xs text-brand-300">
-            <CheckCircle2 size={14} />
-            Session authentifiée
-          </span>
-
-          <h1 className="mt-6 text-3xl font-bold tracking-tight sm:text-4xl">
-            Bienvenue, {user.full_name} !
+        <div>
+          <h1 className="text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl">
+            {greeting}, {firstName} !
           </h1>
 
-          <p className="mt-4 max-w-xl text-sm leading-relaxed text-slate-400">
-            Votre espace de réservation est prêt.
-            Vous êtes connecté de manière sécurisée
-            à RoomBooking.
+          <p className="mt-2 text-sm leading-relaxed text-slate-500">
+            Voici un aperçu de vos espaces
+            et de vos prochaines réunions.
           </p>
-
         </div>
 
-        <div className="mt-8 grid gap-5 md:grid-cols-3">
-
-          <div className="rounded-2xl border border-slate-200 bg-white p-6">
-            <UserRound
-              size={24}
-              className="text-brand-600"
-            />
-
-            <p className="mt-4 text-sm text-slate-500">
-              Nom complet
-            </p>
-
-            <p className="mt-1 break-words font-semibold text-slate-900">
-              {user.full_name}
-            </p>
-          </div>
-
-          <div className="rounded-2xl border border-slate-200 bg-white p-6">
-            <Mail
-              size={24}
-              className="text-brand-600"
-            />
-
-            <p className="mt-4 text-sm text-slate-500">
-              Adresse e-mail
-            </p>
-
-            <p className="mt-1 break-all font-semibold text-slate-900">
-              {user.email}
-            </p>
-          </div>
-
-          <div className="rounded-2xl border border-slate-200 bg-white p-6">
-            <ShieldCheck
-              size={24}
-              className="text-brand-600"
-            />
-
-            <p className="mt-4 text-sm text-slate-500">
-              Niveau d'accès
-            </p>
-
-            <p className="mt-1 font-semibold text-slate-900">
-              {isAdmin
-                ? 'Administrateur'
-                : 'Utilisateur'}
-            </p>
-          </div>
-
-        </div>
-
-        {isAdmin && (
-          <Link
-            to="/admin"
-            className="mt-8 inline-flex items-center gap-2 rounded-xl bg-brand-600 px-5 py-3 text-sm font-semibold text-white transition hover:bg-brand-700"
-          >
-            Accéder à l'administration
-            <ArrowRight size={17} />
-          </Link>
-        )}
-
-        <div className="mt-8 rounded-2xl border border-emerald-200 bg-emerald-50 p-5 text-emerald-800">
-
-          <div className="flex items-center gap-3">
-            <ShieldCheck size={23} />
-
-            <strong>
-              Authentification opérationnelle
-            </strong>
-          </div>
-
-          <p className="mt-2 text-sm">
-            Votre profil provient directement de
-            l'API FastAPI et de PostgreSQL.
-          </p>
-
-        </div>
+        <Link
+          to="/rooms"
+          className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-brand-600 px-5 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-brand-700"
+        >
+          <Plus size={19} />
+          Réserver une salle
+        </Link>
 
       </div>
-    </main>
+
+      <section className="relative overflow-hidden rounded-2xl bg-slate-950 px-6 py-7 text-white sm:px-8">
+
+        <div
+          aria-hidden="true"
+          className="absolute -right-20 -top-32 h-80 w-80 rounded-full bg-brand-600/30 blur-3xl"
+        />
+
+        <div
+          aria-hidden="true"
+          className="absolute -bottom-36 right-40 h-64 w-64 rounded-full bg-indigo-600/20 blur-3xl"
+        />
+
+        <div className="relative z-10 flex items-center justify-between gap-5">
+
+          <div>
+            <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-[11px] font-medium text-brand-300">
+              <span className="h-1.5 w-1.5 rounded-full bg-brand-400" />
+              Votre espace de travail
+            </span>
+
+            <h2 className="mt-4 text-xl font-bold tracking-tight sm:text-2xl">
+              Organisez vos réunions
+              en toute simplicité.
+            </h2>
+
+            <p className="mt-3 max-w-lg text-sm leading-relaxed text-slate-400">
+              Retrouvez les salles disponibles
+              et gérez vos réservations depuis
+              un espace unique.
+            </p>
+
+            <Link
+              to="/rooms"
+              className="mt-5 inline-flex items-center gap-2 text-xs font-semibold text-brand-300 transition hover:text-white"
+            >
+              Explorer les salles
+
+              <ArrowUpRight size={16} />
+            </Link>
+          </div>
+
+          <div
+            aria-hidden="true"
+            className="hidden h-28 w-28 shrink-0 items-center justify-center rounded-3xl border border-white/10 bg-white/5 text-brand-300 sm:flex"
+          >
+            <CalendarDays
+              size={62}
+              strokeWidth={1.1}
+            />
+          </div>
+
+        </div>
+      </section>
+
+      <div className="flex flex-wrap items-center justify-between gap-3">
+
+        <div>
+          <h2 className="text-base font-bold text-slate-900">
+            Vue d'ensemble
+          </h2>
+
+          {data && (
+            <p className="mt-1 text-xs text-slate-400">
+              Dernière actualisation :
+              {' '}
+              {formatDateTime(data.checkedAt)}
+            </p>
+          )}
+        </div>
+
+        <Button
+          variant="secondary"
+          onClick={refresh}
+          loading={isLoading}
+          className="min-h-10 px-4 py-2"
+        >
+          {!isLoading && (
+            <RefreshCw size={15} />
+          )}
+
+          Actualiser
+        </Button>
+
+      </div>
+
+      {isLoading && !data && (
+        <LoadingState
+          message="Chargement de votre tableau de bord..."
+        />
+      )}
+
+      {error && (
+        <ErrorState
+          message={error}
+          onRetry={refresh}
+        />
+      )}
+
+      {data && !error && (
+        <>
+
+          <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+
+            <StatCard
+              title="Salles actives"
+              value={data.stats.totalRooms}
+              description="Espaces de réunion actifs"
+              icon={DoorOpen}
+              color="indigo"
+            />
+
+            <StatCard
+              title="Salles disponibles"
+              value={data.stats.availableRooms}
+              description={
+                `Jusqu'à ${formatTime(
+                  data.availabilityEnd,
+                )}`
+              }
+              icon={CheckCircle2}
+              color="emerald"
+            />
+
+            <StatCard
+              title="Mes réservations"
+              value={data.stats.totalReservations}
+              description="Historique personnel complet"
+              icon={CalendarCheck}
+              color="blue"
+            />
+
+            <StatCard
+              title="À venir"
+              value={data.stats.upcomingReservations}
+              description="Réservations futures confirmées"
+              icon={Clock}
+              color="amber"
+            />
+
+          </div>
+
+          <div className="grid items-start gap-6 xl:grid-cols-[1.4fr_1fr]">
+
+            <RoomPreview
+              rooms={data.availableRooms}
+            />
+
+            <UpcomingReservations
+              reservations={
+                data.upcomingReservations
+              }
+              rooms={data.rooms}
+            />
+
+          </div>
+
+        </>
+      )}
+
+      <footer className="pb-2 pt-3 text-center text-xs text-slate-400">
+        RoomBooking · Votre espace de réunion
+      </footer>
+
+    </div>
   )
 }

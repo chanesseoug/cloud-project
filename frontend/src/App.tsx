@@ -7,11 +7,24 @@ import {
 
 import LoginPage from './pages/auth/LoginPage'
 import RegisterPage from './pages/auth/RegisterPage'
+
 import DashboardPage from './pages/DashboardPage'
+import ProfilePage from './pages/ProfilePage'
+import PlaceholderPage from './pages/PlaceholderPage'
+
 import AdminPage from './pages/admin/AdminPage'
 
-import { ProtectedRoute } from './components/ProtectedRoute'
-import { AdminRoute } from './components/AdminRoute'
+import {
+  ProtectedRoute,
+} from './components/ProtectedRoute'
+
+import {
+  AdminRoute,
+} from './components/AdminRoute'
+
+import {
+  AppLayout,
+} from './components/layout/AppLayout'
 
 export default function App() {
   return (
@@ -20,7 +33,10 @@ export default function App() {
       <Route
         path="/"
         element={
-          <Navigate to="/dashboard" replace />
+          <Navigate
+            to="/dashboard"
+            replace
+          />
         }
       />
 
@@ -36,17 +52,56 @@ export default function App() {
 
       <Route element={<ProtectedRoute />}>
 
-        <Route
-          path="/dashboard"
-          element={<DashboardPage />}
-        />
-
-        <Route element={<AdminRoute />}>
+        <Route element={<AppLayout />}>
 
           <Route
-            path="/admin"
-            element={<AdminPage />}
+            path="/dashboard"
+            element={<DashboardPage />}
           />
+
+          <Route
+            path="/rooms"
+            element={
+              <PlaceholderPage
+                title="Salles de réunion"
+                description="Recherchez un espace adapté à vos besoins."
+              />
+            }
+          />
+
+          <Route
+            path="/calendar"
+            element={
+              <PlaceholderPage
+                title="Calendrier"
+                description="Visualisez vos réunions et vos créneaux."
+              />
+            }
+          />
+
+          <Route
+            path="/reservations"
+            element={
+              <PlaceholderPage
+                title="Mes réservations"
+                description="Retrouvez et gérez vos réservations."
+              />
+            }
+          />
+
+          <Route
+            path="/profile"
+            element={<ProfilePage />}
+          />
+
+          <Route element={<AdminRoute />}>
+
+            <Route
+              path="/admin"
+              element={<AdminPage />}
+            />
+
+          </Route>
 
         </Route>
 
@@ -55,7 +110,10 @@ export default function App() {
       <Route
         path="*"
         element={
-          <Navigate to="/dashboard" replace />
+          <Navigate
+            to="/dashboard"
+            replace
+          />
         }
       />
 
