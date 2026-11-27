@@ -110,3 +110,50 @@ Version actuelle : 0.3.0
 Développement de l'interface utilisateur React
 avec TypeScript.
 
+
+
+## État d'avancement
+
+### Backend
+
+- API REST FastAPI opérationnelle.
+- PostgreSQL et migrations Alembic.
+- Authentification JWT et Argon2id.
+- Gestion des rôles et permissions.
+- Gestion des salles.
+- Gestion des réservations.
+- Protection transactionnelle contre les conflits.
+
+### Frontend
+
+- React, TypeScript, Vite et Tailwind CSS.
+- Authentification et routes protégées.
+- Tableau de bord professionnel.
+- Navigation responsive.
+- Catalogue interactif des salles.
+- Recherche et filtres dynamiques.
+- Réservation réelle avec confirmation.
+- Gestion des conflits HTTP 409.
+
+### Qualité logicielle
+
+| Composant | Outil | Tests réussis |
+|---|---|---:|
+| Backend | Pytest | 57 |
+| Frontend | Vitest | 119 |
+| Total | | 176 |
+
+60 tests manuels frontend ont également
+été validés.
+
+Les rapports de validation sont conservés
+dans le dossier docs/results.
+
+### Prochaines étapes
+
+- Calendrier et gestion des réservations.
+- Administration complète.
+- Validation finale du frontend.
+- Stockage objet et traitements asynchrones.
+- Docker, Kubernetes et Terraform.
+- CI/CD, observabilité, sécurité et FinOps.

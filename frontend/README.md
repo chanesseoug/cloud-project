@@ -69,17 +69,95 @@ dans le dossier dist/.
 
 ## Fonctionnalités à venir
 
-- Authentification JWT.
-- Inscription et connexion.
-- Tableau de bord.
-- Catalogue des salles.
-- Calendrier.
-- Réservations.
-- Administration.
-- Tests frontend.
+- Authentificatio
+## Catalogue et réservations
+
+Le frontend permet désormais :
+
+- La consultation des salles actives.
+- La recherche textuelle.
+- Le filtrage par capacité et équipement.
+- La recherche de disponibilité par créneau.
+- La consultation des détails d'une salle.
+- La création réelle de réservations.
+- La confirmation avec référence unique.
+- La gestion des conflits HTTP 409.
+- L'actualisation du tableau de bord.
+
+## Tests automatisés
+
+    npm test
+
+Résultat actuel : 119 tests réussis.
+
+## Couverture
+
+    npm run test:coverage
+
+Rapport HTML :
+
+    coverage/index.html
+
+## Qualité du code
+
+    npm run lint
+    npm run build
+
+## Validation fonctionnelle cumulée
+
+| Étape | Tests manuels réussis |
+|---|---:|
+| 3B - Authentification | 17 |
+| 3C - Tableau de bord | 18 |
+| 3D - Catalogue et réservation | 25 |
+
+
+## Catalogue et réservations
+
+Le frontend permet désormais :
+
+- La consultation des salles actives.
+- La recherche textuelle.
+- Le filtrage par capacité et équipement.
+- La recherche de disponibilité par créneau.
+- La consultation des détails d'une salle.
+- La création réelle de réservations.
+- La confirmation avec référence unique.
+- La gestion des conflits HTTP 409.
+- L'actualisation du tableau de bord.
+
+## Tests automatisés
+
+    npm test
+
+Résultat actuel : 119 tests réussis.
+
+## Couverture
+
+    npm run test:coverage
+
+Rapport HTML :
+
+    coverage/index.html
+
+## Qualité du code
+
+    npm run lint
+    npm run build
+
+## Validation fonctionnelle cumulée
+
+| Étape | Tests manuels réussis |
+|---|---:|
+| 3B - Authentification | 17 |
+| 3C - Tableau de bord | 18 |
+| 3D - Catalogue et réservation | 25 |
+| Total | 60 |
 
 ## Documentation
 
-- ../docs/development-environment.md
-- ../docs/concurrency-management.md
-- ../docs/api-business.md
+- ../docs/frontend-auth.md
+- ../docs/frontend-dashboard.md
+- ../docs/frontend-rooms.md
+- ../docs/architecture/frontend-auth.md
+- ../docs/architecture/booking-flow.md
