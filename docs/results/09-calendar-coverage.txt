@@ -1,0 +1,103 @@
+
+> frontend@0.0.0 test:coverage
+> vitest run --coverage
+
+
+[1m[30m[46m RUN [49m[39m[22m [36mv4.1.12 [39m[90m/mnt/c/users/c.ouguenoune/Desktop/cours/cloud/frontend[39m
+      [2mCoverage enabled with [22m[33mv8[39m
+
+ [32m✓[39m src/tests/AdminRoute.test.tsx [2m([22m[2m2 tests[22m[2m)[22m[32m 145[2mms[22m[39m
+ [32m✓[39m src/tests/ProtectedRoute.test.tsx [2m([22m[2m3 tests[22m[2m)[22m[33m 412[2mms[22m[39m
+ [32m✓[39m src/tests/client.test.ts [2m([22m[2m7 tests[22m[2m)[22m[32m 41[2mms[22m[39m
+ [32m✓[39m src/tests/AuthContext.test.tsx [2m([22m[2m8 tests[22m[2m)[22m[33m 330[2mms[22m[39m
+ [32m✓[39m src/tests/token.test.ts [2m([22m[2m8 tests[22m[2m)[22m[32m 14[2mms[22m[39m
+ [32m✓[39m src/tests/LoginPage.test.tsx [2m([22m[2m5 tests[22m[2m)[22m[33m 2130[2mms[22m[39m
+     [33m[2m✓[22m[39m renders the login form [33m 473[2mms[22m[39m
+     [33m[2m✓[22m[39m redirects to the dashboard after a valid login [33m 844[2mms[22m[39m
+     [33m[2m✓[22m[39m displays an error after invalid credentials [33m 724[2mms[22m[39m
+ [32m✓[39m src/tests/Input.test.tsx [2m([22m[2m3 tests[22m[2m)[22m[33m 494[2mms[22m[39m
+     [33m[2m✓[22m[39m toggles password visibility [33m 367[2mms[22m[39m
+ [32m✓[39m src/tests/RegisterPage.test.tsx [2m([22m[2m6 tests[22m[2m)[22m[33m 8077[2mms[22m[39m
+     [33m[2m✓[22m[39m creates a valid user and redirects to login [33m 2000[2mms[22m[39m
+     [33m[2m✓[22m[39m rejects an empty full name [33m 1093[2mms[22m[39m
+     [33m[2m✓[22m[39m rejects an invalid email address [33m 1377[2mms[22m[39m
+     [33m[2m✓[22m[39m rejects a password shorter than 12 characters [33m 996[2mms[22m[39m
+     [33m[2m✓[22m[39m rejects a different password confirmation [33m 1309[2mms[22m[39m
+     [33m[2m✓[22m[39m displays the API error for a duplicate email [33m 1297[2mms[22m[39m
+ [32m✓[39m src/tests/auth.test.ts [2m([22m[2m3 tests[22m[2m)[22m[32m 36[2mms[22m[39m
+
+[2m Test Files [22m [1m[32m9 passed[39m[22m[90m (9)[39m
+[2m      Tests [22m [1m[32m45 passed[39m[22m[90m (45)[39m
+[2m   Start at [22m 01:53:07
+[2m   Duration [22m 48.03s[2m (transform 4.96s, setup 50.42s, import 25.67s, tests 11.68s, environment 176.90s)[22m
+
+[34m % [39m[2mCoverage report from [22m[33mv8[39m
+-------------------|---------|----------|---------|---------|-------------------
+File               | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
+-------------------|---------|----------|---------|---------|-------------------
+All files          |    23.9 |    22.62 |   18.75 |    24.5 |                   
+ api               |   48.19 |    46.34 |   46.66 |   48.19 |                   
+  auth.ts          |     100 |      100 |     100 |     100 |                   
+  client.ts        |   76.92 |    57.57 |     100 |   76.92 | 86,90,99-112      
+  reservations.ts  |       0 |        0 |       0 |       0 | 10-86             
+  rooms.ts         |       0 |        0 |       0 |       0 | 9-64              
+ components        |     100 |      100 |     100 |     100 |                   
+  AdminRoute.tsx   |     100 |      100 |     100 |     100 |                   
+  ...ctedRoute.tsx |     100 |      100 |     100 |     100 |                   
+ ...nents/calendar |       0 |        0 |       0 |       0 |                   
+  ...gCalendar.tsx |       0 |        0 |       0 |       0 | 58-206            
+ ...ents/dashboard |       0 |        0 |       0 |       0 |                   
+  RoomPreview.tsx  |       0 |        0 |       0 |       0 | 22-92             
+  StatCard.tsx     |       0 |        0 |       0 |       0 | 19-40             
+  ...ervations.tsx |       0 |        0 |       0 |       0 | 28-80             
+ components/layout |   12.19 |        0 |   10.52 |    12.5 |                   
+  AppLayout.tsx    |       0 |        0 |       0 |       0 | 14-97             
+  AuthLayout.tsx   |     100 |      100 |     100 |     100 |                   
+  Header.tsx       |       0 |        0 |       0 |       0 | 25-45             
+  Sidebar.tsx      |       0 |        0 |       0 |       0 | 25-149            
+ ...s/reservations |       0 |        0 |       0 |       0 |                   
+  BookingForm.tsx  |       0 |        0 |       0 |       0 | 72-407            
+  ...ngSuccess.tsx |       0 |        0 |       0 |       0 | 40-109            
+  ...ationCard.tsx |       0 |        0 |       0 |       0 | 54-176            
+  ...ailsModal.tsx |       0 |        0 |       0 |       0 | 72-285            
+  ...ionStatus.tsx |       0 |      100 |       0 |       0 | 18-50             
+ components/rooms  |       0 |        0 |       0 |       0 |                   
+  RoomCard.tsx     |       0 |        0 |       0 |       0 | 25-99             
+  ...ailsModal.tsx |       0 |        0 |       0 |       0 | 51-127            
+  RoomFilters.tsx  |       0 |        0 |       0 |       0 | 35-240            
+ components/ui     |      30 |    72.72 |      30 |   31.03 |                   
+  Button.tsx       |     100 |      100 |     100 |     100 |                   
+  EmptyState.tsx   |       0 |        0 |       0 |       0 | 18                
+  ErrorState.tsx   |       0 |      100 |       0 |       0 | 18                
+  Input.tsx        |     100 |      100 |     100 |     100 |                   
+  LoadingState.tsx |       0 |        0 |       0 |       0 | 11                
+  Modal.tsx        |       0 |        0 |       0 |       0 | 25-60             
+ context           |   86.11 |    58.33 |   93.75 |   85.91 |                   
+  AuthContext.tsx  |   85.91 |    58.33 |   93.75 |   85.71 | ...65,174,186-187 
+  auth-context.ts  |     100 |      100 |     100 |     100 |                   
+ hooks             |    3.22 |     5.55 |    2.77 |    3.65 |                   
+  useAuth.ts       |      75 |       50 |     100 |      75 | 10                
+  useDashboard.ts  |       0 |        0 |       0 |       0 | 29-126            
+  ...servations.ts |       0 |        0 |       0 |       0 | 28-127            
+  useRooms.ts      |       0 |        0 |       0 |       0 | 26-118            
+ pages             |       0 |        0 |       0 |       0 |                   
+  CalendarPage.tsx |       0 |        0 |       0 |       0 | 50-254            
+  ...boardPage.tsx |       0 |        0 |       0 |       0 | 49-66             
+  HealthPage.tsx   |       0 |        0 |       0 |       0 | 24-203            
+  ...olderPage.tsx |       0 |      100 |       0 |       0 | 18                
+  ProfilePage.tsx  |       0 |        0 |       0 |       0 | 25-111            
+  ...tionsPage.tsx |       0 |        0 |       0 |       0 | 67-347            
+  RoomsPage.tsx    |       0 |        0 |       0 |       0 | 74-539            
+ pages/admin       |       0 |        0 |       0 |       0 |                   
+  AdminPage.tsx    |       0 |        0 |       0 |       0 | 30-159            
+ pages/auth        |   92.64 |     91.3 |     100 |   95.45 |                   
+  LoginPage.tsx    |    87.5 |     87.5 |     100 |    91.3 | 50-54             
+  RegisterPage.tsx |   95.45 |    93.33 |     100 |   97.67 | 146               
+ utils             |   16.26 |    12.34 |   16.66 |   16.26 |                   
+  booking.ts       |       0 |        0 |       0 |       0 | 21-186            
+  dashboard.ts     |       0 |        0 |       0 |       0 | 7-56              
+  format.ts        |       0 |        0 |       0 |       0 | 5-59              
+  reservations.ts  |       0 |        0 |       0 |       0 | 29-158            
+  token.ts         |   95.23 |     90.9 |     100 |   95.23 | 44                
+-------------------|---------|----------|---------|---------|-------------------
+Code de sortie : 0

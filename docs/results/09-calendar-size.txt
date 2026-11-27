@@ -1,0 +1,13 @@
+=== BUILD SIZE ===
+736K	dist/
+
+=== BUILD ASSETS ===
+total 712K
+-rwxrwxrwx 1 couguenoune couguenoune 667K Nov 27 01:54 index-BiB2pVje.js
+-rwxrwxrwx 1 couguenoune couguenoune  44K Nov 27 01:54 index-C0KevrcG.css
+
+=== NODE VERSION ===
+v20.19.5
+
+=== NPM VERSION ===
+10.8.2

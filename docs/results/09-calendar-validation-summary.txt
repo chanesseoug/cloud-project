@@ -1,0 +1,272 @@
+=== FULLCALENDAR VERSIONS ===
+frontend@0.0.0 /mnt/c/users/c.ouguenoune/Desktop/cours/cloud/frontend
+├── @fullcalendar/core@6.1.22
+├─┬ @fullcalendar/daygrid@6.1.22
+│ └── @fullcalendar/core@6.1.22 deduped
+├─┬ @fullcalendar/interaction@6.1.22
+│ └── @fullcalendar/core@6.1.22 deduped
+├─┬ @fullcalendar/react@6.1.22
+│ └── @fullcalendar/core@6.1.22 deduped
+└─┬ @fullcalendar/timegrid@6.1.22
+  ├── @fullcalendar/core@6.1.22 deduped
+  └── @fullcalendar/daygrid@6.1.22 deduped
+
+
+=== OXLINT ===
+
+> frontend@0.0.0 lint
+> oxlint
+
+Found 0 warnings and 0 errors.
+Finished in 568ms on 67 files with 116 rules using 14 threads.
+Code de sortie : 0
+
+=== VITEST ===
+ [32m✓[39m src/tests/token.test.ts[2m > [22mJWT token utilities[2m > [22mstores the access token[32m 7[2mms[22m[39m
+ [32m✓[39m src/tests/token.test.ts[2m > [22mJWT token utilities[2m > [22mretrieves the stored token[32m 1[2mms[22m[39m
+ [32m✓[39m src/tests/token.test.ts[2m > [22mJWT token utilities[2m > [22mremoves the stored token[32m 2[2mms[22m[39m
+ [32m✓[39m src/tests/token.test.ts[2m > [22mJWT token utilities[2m > [22mdecodes a valid JWT payload[32m 2[2mms[22m[39m
+ [32m✓[39m src/tests/token.test.ts[2m > [22mJWT token utilities[2m > [22mrejects a malformed token[32m 1[2mms[22m[39m
+ [32m✓[39m src/tests/token.test.ts[2m > [22mJWT token utilities[2m > [22mdetects an expired token[32m 1[2mms[22m[39m
+ [32m✓[39m src/tests/token.test.ts[2m > [22mJWT token utilities[2m > [22maccepts a non-expired token[32m 0[2mms[22m[39m
+ [32m✓[39m src/tests/token.test.ts[2m > [22mJWT token utilities[2m > [22mreturns the token expiration timestamp[32m 1[2mms[22m[39m
+
+[2m Test Files [22m [1m[32m9 passed[39m[22m[90m (9)[39m
+[2m      Tests [22m [1m[32m45 passed[39m[22m[90m (45)[39m
+[2m   Start at [22m 01:52:20
+[2m   Duration [22m 40.20s[2m (transform 5.33s, setup 51.89s, import 25.74s, tests 10.95s, environment 184.56s)[22m
+
+Code de sortie : 0
+
+=== COVERAGE ===
+
+> frontend@0.0.0 test:coverage
+> vitest run --coverage
+
+
+[1m[30m[46m RUN [49m[39m[22m [36mv4.1.12 [39m[90m/mnt/c/users/c.ouguenoune/Desktop/cours/cloud/frontend[39m
+      [2mCoverage enabled with [22m[33mv8[39m
+
+ [32m✓[39m src/tests/AdminRoute.test.tsx [2m([22m[2m2 tests[22m[2m)[22m[32m 145[2mms[22m[39m
+ [32m✓[39m src/tests/ProtectedRoute.test.tsx [2m([22m[2m3 tests[22m[2m)[22m[33m 412[2mms[22m[39m
+ [32m✓[39m src/tests/client.test.ts [2m([22m[2m7 tests[22m[2m)[22m[32m 41[2mms[22m[39m
+ [32m✓[39m src/tests/AuthContext.test.tsx [2m([22m[2m8 tests[22m[2m)[22m[33m 330[2mms[22m[39m
+ [32m✓[39m src/tests/token.test.ts [2m([22m[2m8 tests[22m[2m)[22m[32m 14[2mms[22m[39m
+ [32m✓[39m src/tests/LoginPage.test.tsx [2m([22m[2m5 tests[22m[2m)[22m[33m 2130[2mms[22m[39m
+     [33m[2m✓[22m[39m renders the login form [33m 473[2mms[22m[39m
+     [33m[2m✓[22m[39m redirects to the dashboard after a valid login [33m 844[2mms[22m[39m
+     [33m[2m✓[22m[39m displays an error after invalid credentials [33m 724[2mms[22m[39m
+ [32m✓[39m src/tests/Input.test.tsx [2m([22m[2m3 tests[22m[2m)[22m[33m 494[2mms[22m[39m
+     [33m[2m✓[22m[39m toggles password visibility [33m 367[2mms[22m[39m
+ [32m✓[39m src/tests/RegisterPage.test.tsx [2m([22m[2m6 tests[22m[2m)[22m[33m 8077[2mms[22m[39m
+     [33m[2m✓[22m[39m creates a valid user and redirects to login [33m 2000[2mms[22m[39m
+     [33m[2m✓[22m[39m rejects an empty full name [33m 1093[2mms[22m[39m
+     [33m[2m✓[22m[39m rejects an invalid email address [33m 1377[2mms[22m[39m
+     [33m[2m✓[22m[39m rejects a password shorter than 12 characters [33m 996[2mms[22m[39m
+     [33m[2m✓[22m[39m rejects a different password confirmation [33m 1309[2mms[22m[39m
+     [33m[2m✓[22m[39m displays the API error for a duplicate email [33m 1297[2mms[22m[39m
+ [32m✓[39m src/tests/auth.test.ts [2m([22m[2m3 tests[22m[2m)[22m[32m 36[2mms[22m[39m
+
+[2m Test Files [22m [1m[32m9 passed[39m[22m[90m (9)[39m
+[2m      Tests [22m [1m[32m45 passed[39m[22m[90m (45)[39m
+[2m   Start at [22m 01:53:07
+[2m   Duration [22m 48.03s[2m (transform 4.96s, setup 50.42s, import 25.67s, tests 11.68s, environment 176.90s)[22m
+
+[34m % [39m[2mCoverage report from [22m[33mv8[39m
+-------------------|---------|----------|---------|---------|-------------------
+File               | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
+-------------------|---------|----------|---------|---------|-------------------
+All files          |    23.9 |    22.62 |   18.75 |    24.5 |                   
+ api               |   48.19 |    46.34 |   46.66 |   48.19 |                   
+  auth.ts          |     100 |      100 |     100 |     100 |                   
+  client.ts        |   76.92 |    57.57 |     100 |   76.92 | 86,90,99-112      
+  reservations.ts  |       0 |        0 |       0 |       0 | 10-86             
+  rooms.ts         |       0 |        0 |       0 |       0 | 9-64              
+ components        |     100 |      100 |     100 |     100 |                   
+  AdminRoute.tsx   |     100 |      100 |     100 |     100 |                   
+  ...ctedRoute.tsx |     100 |      100 |     100 |     100 |                   
+ ...nents/calendar |       0 |        0 |       0 |       0 |                   
+  ...gCalendar.tsx |       0 |        0 |       0 |       0 | 58-206            
+ ...ents/dashboard |       0 |        0 |       0 |       0 |                   
+  RoomPreview.tsx  |       0 |        0 |       0 |       0 | 22-92             
+  StatCard.tsx     |       0 |        0 |       0 |       0 | 19-40             
+  ...ervations.tsx |       0 |        0 |       0 |       0 | 28-80             
+ components/layout |   12.19 |        0 |   10.52 |    12.5 |                   
+  AppLayout.tsx    |       0 |        0 |       0 |       0 | 14-97             
+  AuthLayout.tsx   |     100 |      100 |     100 |     100 |                   
+  Header.tsx       |       0 |        0 |       0 |       0 | 25-45             
+  Sidebar.tsx      |       0 |        0 |       0 |       0 | 25-149            
+ ...s/reservations |       0 |        0 |       0 |       0 |                   
+  BookingForm.tsx  |       0 |        0 |       0 |       0 | 72-407            
+  ...ngSuccess.tsx |       0 |        0 |       0 |       0 | 40-109            
+  ...ationCard.tsx |       0 |        0 |       0 |       0 | 54-176            
+  ...ailsModal.tsx |       0 |        0 |       0 |       0 | 72-285            
+  ...ionStatus.tsx |       0 |      100 |       0 |       0 | 18-50             
+ components/rooms  |       0 |        0 |       0 |       0 |                   
+  RoomCard.tsx     |       0 |        0 |       0 |       0 | 25-99             
+  ...ailsModal.tsx |       0 |        0 |       0 |       0 | 51-127            
+  RoomFilters.tsx  |       0 |        0 |       0 |       0 | 35-240            
+ components/ui     |      30 |    72.72 |      30 |   31.03 |                   
+  Button.tsx       |     100 |      100 |     100 |     100 |                   
+  EmptyState.tsx   |       0 |        0 |       0 |       0 | 18                
+  ErrorState.tsx   |       0 |      100 |       0 |       0 | 18                
+  Input.tsx        |     100 |      100 |     100 |     100 |                   
+  LoadingState.tsx |       0 |        0 |       0 |       0 | 11                
+  Modal.tsx        |       0 |        0 |       0 |       0 | 25-60             
+ context           |   86.11 |    58.33 |   93.75 |   85.91 |                   
+  AuthContext.tsx  |   85.91 |    58.33 |   93.75 |   85.71 | ...65,174,186-187 
+  auth-context.ts  |     100 |      100 |     100 |     100 |                   
+ hooks             |    3.22 |     5.55 |    2.77 |    3.65 |                   
+  useAuth.ts       |      75 |       50 |     100 |      75 | 10                
+  useDashboard.ts  |       0 |        0 |       0 |       0 | 29-126            
+  ...servations.ts |       0 |        0 |       0 |       0 | 28-127            
+  useRooms.ts      |       0 |        0 |       0 |       0 | 26-118            
+ pages             |       0 |        0 |       0 |       0 |                   
+  CalendarPage.tsx |       0 |        0 |       0 |       0 | 50-254            
+  ...boardPage.tsx |       0 |        0 |       0 |       0 | 49-66             
+  HealthPage.tsx   |       0 |        0 |       0 |       0 | 24-203            
+  ...olderPage.tsx |       0 |      100 |       0 |       0 | 18                
+  ProfilePage.tsx  |       0 |        0 |       0 |       0 | 25-111            
+  ...tionsPage.tsx |       0 |        0 |       0 |       0 | 67-347            
+  RoomsPage.tsx    |       0 |        0 |       0 |       0 | 74-539            
+ pages/admin       |       0 |        0 |       0 |       0 |                   
+  AdminPage.tsx    |       0 |        0 |       0 |       0 | 30-159            
+ pages/auth        |   92.64 |     91.3 |     100 |   95.45 |                   
+  LoginPage.tsx    |    87.5 |     87.5 |     100 |    91.3 | 50-54             
+  RegisterPage.tsx |   95.45 |    93.33 |     100 |   97.67 | 146               
+ utils             |   16.26 |    12.34 |   16.66 |   16.26 |                   
+  booking.ts       |       0 |        0 |       0 |       0 | 21-186            
+  dashboard.ts     |       0 |        0 |       0 |       0 | 7-56              
+  format.ts        |       0 |        0 |       0 |       0 | 5-59              
+  reservations.ts  |       0 |        0 |       0 |       0 | 29-158            
+  token.ts         |   95.23 |     90.9 |     100 |   95.23 | 44                
+-------------------|---------|----------|---------|---------|-------------------
+Code de sortie : 0
+
+=== COVERAGE JSON ===
+{"total": {"lines":{"total":861,"covered":211,"skipped":0,"pct":24.5},"statements":{"total":887,"covered":212,"skipped":0,"pct":23.9},"functions":{"total":256,"covered":48,"skipped":0,"pct":18.75},"branches":{"total":548,"covered":124,"skipped":0,"pct":22.62},"branchesTrue":{"total":0,"covered":0,"skipped":0,"pct":100}}
+,"/mnt/c/users/c.ouguenoune/Desktop/cours/cloud/frontend/src/api/auth.ts": {"lines":{"total":10,"covered":10,"skipped":0,"pct":100},"functions":{"total":3,"covered":3,"skipped":0,"pct":100},"statements":{"total":10,"covered":10,"skipped":0,"pct":100},"branches":{"total":0,"covered":0,"skipped":0,"pct":100}}
+,"/mnt/c/users/c.ouguenoune/Desktop/cours/cloud/frontend/src/api/client.ts": {"lines":{"total":39,"covered":30,"skipped":0,"pct":76.92},"functions":{"total":4,"covered":4,"skipped":0,"pct":100},"statements":{"total":39,"covered":30,"skipped":0,"pct":76.92},"branches":{"total":33,"covered":19,"skipped":0,"pct":57.57}}
+,"/mnt/c/users/c.ouguenoune/Desktop/cours/cloud/frontend/src/api/reservations.ts": {"lines":{"total":19,"covered":0,"skipped":0,"pct":0},"functions":{"total":5,"covered":0,"skipped":0,"pct":0},"statements":{"total":19,"covered":0,"skipped":0,"pct":0},"branches":{"total":4,"covered":0,"skipped":0,"pct":0}}
+,"/mnt/c/users/c.ouguenoune/Desktop/cours/cloud/frontend/src/api/rooms.ts": {"lines":{"total":15,"covered":0,"skipped":0,"pct":0},"functions":{"total":3,"covered":0,"skipped":0,"pct":0},"statements":{"total":15,"covered":0,"skipped":0,"pct":0},"branches":{"total":4,"covered":0,"skipped":0,"pct":0}}
+,"/mnt/c/users/c.ouguenoune/Desktop/cours/cloud/frontend/src/components/AdminRoute.tsx": {"lines":{"total":4,"covered":4,"skipped":0,"pct":100},"functions":{"total":1,"covered":1,"skipped":0,"pct":100},"statements":{"total":4,"covered":4,"skipped":0,"pct":100},"branches":{"total":2,"covered":2,"skipped":0,"pct":100}}
+,"/mnt/c/users/c.ouguenoune/Desktop/cours/cloud/frontend/src/components/ProtectedRoute.tsx": {"lines":{"total":6,"covered":6,"skipped":0,"pct":100},"functions":{"total":1,"covered":1,"skipped":0,"pct":100},"statements":{"total":6,"covered":6,"skipped":0,"pct":100},"branches":{"total":4,"covered":4,"skipped":0,"pct":100}}
+,"/mnt/c/users/c.ouguenoune/Desktop/cours/cloud/frontend/src/components/calendar/BookingCalendar.tsx": {"lines":{"total":22,"covered":0,"skipped":0,"pct":0},"functions":{"total":10,"covered":0,"skipped":0,"pct":0},"statements":{"total":22,"covered":0,"skipped":0,"pct":0},"branches":{"total":10,"covered":0,"skipped":0,"pct":0}}
+,"/mnt/c/users/c.ouguenoune/Desktop/cours/cloud/frontend/src/components/dashboard/RoomPreview.tsx": {"lines":{"total":3,"covered":0,"skipped":0,"pct":0},"functions":{"total":3,"covered":0,"skipped":0,"pct":0},"statements":{"total":3,"covered":0,"skipped":0,"pct":0},"branches":{"total":4,"covered":0,"skipped":0,"pct":0}}
+,"/mnt/c/users/c.ouguenoune/Desktop/cours/cloud/frontend/src/components/dashboard/StatCard.tsx": {"lines":{"total":2,"covered":0,"skipped":0,"pct":0},"functions":{"total":1,"covered":0,"skipped":0,"pct":0},"statements":{"total":2,"covered":0,"skipped":0,"pct":0},"branches":{"total":1,"covered":0,"skipped":0,"pct":0}}
+,"/mnt/c/users/c.ouguenoune/Desktop/cours/cloud/frontend/src/components/dashboard/UpcomingReservations.tsx": {"lines":{"total":6,"covered":0,"skipped":0,"pct":0},"functions":{"total":3,"covered":0,"skipped":0,"pct":0},"statements":{"total":6,"covered":0,"skipped":0,"pct":0},"branches":{"total":6,"covered":0,"skipped":0,"pct":0}}
+,"/mnt/c/users/c.ouguenoune/Desktop/cours/cloud/frontend/src/components/layout/AppLayout.tsx": {"lines":{"total":23,"covered":0,"skipped":0,"pct":0},"functions":{"total":12,"covered":0,"skipped":0,"pct":0},"statements":{"total":24,"covered":0,"skipped":0,"pct":0},"branches":{"total":6,"covered":0,"skipped":0,"pct":0}}
+,"/mnt/c/users/c.ouguenoune/Desktop/cours/cloud/frontend/src/components/layout/AuthLayout.tsx": {"lines":{"total":5,"covered":5,"skipped":0,"pct":100},"functions":{"total":2,"covered":2,"skipped":0,"pct":100},"statements":{"total":5,"covered":5,"skipped":0,"pct":100},"branches":{"total":0,"covered":0,"skipped":0,"pct":100}}
+,"/mnt/c/users/c.ouguenoune/Desktop/cours/cloud/frontend/src/components/layout/Header.tsx": {"lines":{"total":5,"covered":0,"skipped":0,"pct":0},"functions":{"total":1,"covered":0,"skipped":0,"pct":0},"statements":{"total":5,"covered":0,"skipped":0,"pct":0},"branches":{"total":6,"covered":0,"skipped":0,"pct":0}}
+,"/mnt/c/users/c.ouguenoune/Desktop/cours/cloud/frontend/src/components/layout/Sidebar.tsx": {"lines":{"total":7,"covered":0,"skipped":0,"pct":0},"functions":{"total":4,"covered":0,"skipped":0,"pct":0},"statements":{"total":7,"covered":0,"skipped":0,"pct":0},"branches":{"total":10,"covered":0,"skipped":0,"pct":0}}
+,"/mnt/c/users/c.ouguenoune/Desktop/cours/cloud/frontend/src/components/reservations/BookingForm.tsx": {"lines":{"total":78,"covered":0,"skipped":0,"pct":0},"functions":{"total":14,"covered":0,"skipped":0,"pct":0},"statements":{"total":82,"covered":0,"skipped":0,"pct":0},"branches":{"total":51,"covered":0,"skipped":0,"pct":0}}
+,"/mnt/c/users/c.ouguenoune/Desktop/cours/cloud/frontend/src/components/reservations/BookingSuccess.tsx": {"lines":{"total":5,"covered":0,"skipped":0,"pct":0},"functions":{"total":2,"covered":0,"skipped":0,"pct":0},"statements":{"total":5,"covered":0,"skipped":0,"pct":0},"branches":{"total":2,"covered":0,"skipped":0,"pct":0}}
+,"/mnt/c/users/c.ouguenoune/Desktop/cours/cloud/frontend/src/components/reservations/ReservationCard.tsx": {"lines":{"total":4,"covered":0,"skipped":0,"pct":0},"functions":{"total":3,"covered":0,"skipped":0,"pct":0},"statements":{"total":4,"covered":0,"skipped":0,"pct":0},"branches":{"total":4,"covered":0,"skipped":0,"pct":0}}
+,"/mnt/c/users/c.ouguenoune/Desktop/cours/cloud/frontend/src/components/reservations/ReservationDetailsModal.tsx": {"lines":{"total":32,"covered":0,"skipped":0,"pct":0},"functions":{"total":6,"covered":0,"skipped":0,"pct":0},"statements":{"total":33,"covered":0,"skipped":0,"pct":0},"branches":{"total":23,"covered":0,"skipped":0,"pct":0}}
+,"/mnt/c/users/c.ouguenoune/Desktop/cours/cloud/frontend/src/components/reservations/ReservationStatus.tsx": {"lines":{"total":4,"covered":0,"skipped":0,"pct":0},"functions":{"total":1,"covered":0,"skipped":0,"pct":0},"statements":{"total":4,"covered":0,"skipped":0,"pct":0},"branches":{"total":0,"covered":0,"skipped":0,"pct":100}}
+,"/mnt/c/users/c.ouguenoune/Desktop/cours/cloud/frontend/src/components/rooms/RoomCard.tsx": {"lines":{"total":3,"covered":0,"skipped":0,"pct":0},"functions":{"total":3,"covered":0,"skipped":0,"pct":0},"statements":{"total":3,"covered":0,"skipped":0,"pct":0},"branches":{"total":8,"covered":0,"skipped":0,"pct":0}}
+,"/mnt/c/users/c.ouguenoune/Desktop/cours/cloud/frontend/src/components/rooms/RoomDetailsModal.tsx": {"lines":{"total":7,"covered":0,"skipped":0,"pct":0},"functions":{"total":3,"covered":0,"skipped":0,"pct":0},"statements":{"total":7,"covered":0,"skipped":0,"pct":0},"branches":{"total":10,"covered":0,"skipped":0,"pct":0}}
+,"/mnt/c/users/c.ouguenoune/Desktop/cours/cloud/frontend/src/components/rooms/RoomFilters.tsx": {"lines":{"total":12,"covered":0,"skipped":0,"pct":0},"functions":{"total":10,"covered":0,"skipped":0,"pct":0},"statements":{"total":12,"covered":0,"skipped":0,"pct":0},"branches":{"total":6,"covered":0,"skipped":0,"pct":0}}
+,"/mnt/c/users/c.ouguenoune/Desktop/cours/cloud/frontend/src/components/ui/Button.tsx": {"lines":{"total":2,"covered":2,"skipped":0,"pct":100},"functions":{"total":1,"covered":1,"skipped":0,"pct":100},"statements":{"total":2,"covered":2,"skipped":0,"pct":100},"branches":{"total":7,"covered":7,"skipped":0,"pct":100}}
+,"/mnt/c/users/c.ouguenoune/Desktop/cours/cloud/frontend/src/components/ui/EmptyState.tsx": {"lines":{"total":1,"covered":0,"skipped":0,"pct":0},"functions":{"total":1,"covered":0,"skipped":0,"pct":0},"statements":{"total":1,"covered":0,"skipped":0,"pct":0},"branches":{"total":2,"covered":0,"skipped":0,"pct":0}}
+,"/mnt/c/users/c.ouguenoune/Desktop/cours/cloud/frontend/src/components/ui/ErrorState.tsx": {"lines":{"total":1,"covered":0,"skipped":0,"pct":0},"functions":{"total":1,"covered":0,"skipped":0,"pct":0},"statements":{"total":1,"covered":0,"skipped":0,"pct":0},"branches":{"total":0,"covered":0,"skipped":0,"pct":100}}
+,"/mnt/c/users/c.ouguenoune/Desktop/cours/cloud/frontend/src/components/ui/Input.tsx": {"lines":{"total":7,"covered":7,"skipped":0,"pct":100},"functions":{"total":2,"covered":2,"skipped":0,"pct":100},"statements":{"total":7,"covered":7,"skipped":0,"pct":100},"branches":{"total":25,"covered":25,"skipped":0,"pct":100}}
+,"/mnt/c/users/c.ouguenoune/Desktop/cours/cloud/frontend/src/components/ui/LoadingState.tsx": {"lines":{"total":1,"covered":0,"skipped":0,"pct":0},"functions":{"total":1,"covered":0,"skipped":0,"pct":0},"statements":{"total":1,"covered":0,"skipped":0,"pct":0},"branches":{"total":1,"covered":0,"skipped":0,"pct":0}}
+,"/mnt/c/users/c.ouguenoune/Desktop/cours/cloud/frontend/src/components/ui/Modal.tsx": {"lines":{"total":17,"covered":0,"skipped":0,"pct":0},"functions":{"total":4,"covered":0,"skipped":0,"pct":0},"statements":{"total":18,"covered":0,"skipped":0,"pct":0},"branches":{"total":9,"covered":0,"skipped":0,"pct":0}}
+,"/mnt/c/users/c.ouguenoune/Desktop/cours/cloud/frontend/src/context/AuthContext.tsx": {"lines":{"total":70,"covered":60,"skipped":0,"pct":85.71},"functions":{"total":16,"covered":15,"skipped":0,"pct":93.75},"statements":{"total":71,"covered":61,"skipped":0,"pct":85.91},"branches":{"total":24,"covered":14,"skipped":0,"pct":58.33}}
+,"/mnt/c/users/c.ouguenoune/Desktop/cours/cloud/frontend/src/context/auth-context.ts": {"lines":{"total":1,"covered":1,"skipped":0,"pct":100},"functions":{"total":0,"covered":0,"skipped":0,"pct":100},"statements":{"total":1,"covered":1,"skipped":0,"pct":100},"branches":{"total":0,"covered":0,"skipped":0,"pct":100}}
+,"/mnt/c/users/c.ouguenoune/Desktop/cours/cloud/frontend/src/hooks/useAuth.ts": {"lines":{"total":4,"covered":3,"skipped":0,"pct":75},"functions":{"total":1,"covered":1,"skipped":0,"pct":100},"statements":{"total":4,"covered":3,"skipped":0,"pct":75},"branches":{"total":2,"covered":1,"skipped":0,"pct":50}}
+,"/mnt/c/users/c.ouguenoune/Desktop/cours/cloud/frontend/src/hooks/useDashboard.ts": {"lines":{"total":22,"covered":0,"skipped":0,"pct":0},"functions":{"total":8,"covered":0,"skipped":0,"pct":0},"statements":{"total":25,"covered":0,"skipped":0,"pct":0},"branches":{"total":4,"covered":0,"skipped":0,"pct":0}}
+,"/mnt/c/users/c.ouguenoune/Desktop/cours/cloud/frontend/src/hooks/useReservations.ts": {"lines":{"total":29,"covered":0,"skipped":0,"pct":0},"functions":{"total":15,"covered":0,"skipped":0,"pct":0},"statements":{"total":34,"covered":0,"skipped":0,"pct":0},"branches":{"total":6,"covered":0,"skipped":0,"pct":0}}
+,"/mnt/c/users/c.ouguenoune/Desktop/cours/cloud/frontend/src/hooks/useRooms.ts": {"lines":{"total":27,"covered":0,"skipped":0,"pct":0},"functions":{"total":12,"covered":0,"skipped":0,"pct":0},"statements":{"total":30,"covered":0,"skipped":0,"pct":0},"branches":{"total":6,"covered":0,"skipped":0,"pct":0}}
+,"/mnt/c/users/c.ouguenoune/Desktop/cours/cloud/frontend/src/pages/CalendarPage.tsx": {"lines":{"total":20,"covered":0,"skipped":0,"pct":0},"functions":{"total":6,"covered":0,"skipped":0,"pct":0},"statements":{"total":20,"covered":0,"skipped":0,"pct":0},"branches":{"total":14,"covered":0,"skipped":0,"pct":0}}
+,"/mnt/c/users/c.ouguenoune/Desktop/cours/cloud/frontend/src/pages/DashboardPage.tsx": {"lines":{"total":6,"covered":0,"skipped":0,"pct":0},"functions":{"total":2,"covered":0,"skipped":0,"pct":0},"statements":{"total":6,"covered":0,"skipped":0,"pct":0},"branches":{"total":14,"covered":0,"skipped":0,"pct":0}}
+,"/mnt/c/users/c.ouguenoune/Desktop/cours/cloud/frontend/src/pages/HealthPage.tsx": {"lines":{"total":30,"covered":0,"skipped":0,"pct":0},"functions":{"total":7,"covered":0,"skipped":0,"pct":0},"statements":{"total":34,"covered":0,"skipped":0,"pct":0},"branches":{"total":20,"covered":0,"skipped":0,"pct":0}}
+,"/mnt/c/users/c.ouguenoune/Desktop/cours/cloud/frontend/src/pages/PlaceholderPage.tsx": {"lines":{"total":1,"covered":0,"skipped":0,"pct":0},"functions":{"total":1,"covered":0,"skipped":0,"pct":0},"statements":{"total":1,"covered":0,"skipped":0,"pct":0},"branches":{"total":0,"covered":0,"skipped":0,"pct":100}}
+,"/mnt/c/users/c.ouguenoune/Desktop/cours/cloud/frontend/src/pages/ProfilePage.tsx": {"lines":{"total":7,"covered":0,"skipped":0,"pct":0},"functions":{"total":2,"covered":0,"skipped":0,"pct":0},"statements":{"total":7,"covered":0,"skipped":0,"pct":0},"branches":{"total":6,"covered":0,"skipped":0,"pct":0}}
+,"/mnt/c/users/c.ouguenoune/Desktop/cours/cloud/frontend/src/pages/ReservationsPage.tsx": {"lines":{"total":22,"covered":0,"skipped":0,"pct":0},"functions":{"total":11,"covered":0,"skipped":0,"pct":0},"statements":{"total":22,"covered":0,"skipped":0,"pct":0},"branches":{"total":13,"covered":0,"skipped":0,"pct":0}}
+,"/mnt/c/users/c.ouguenoune/Desktop/cours/cloud/frontend/src/pages/RoomsPage.tsx": {"lines":{"total":75,"covered":0,"skipped":0,"pct":0},"functions":{"total":17,"covered":0,"skipped":0,"pct":0},"statements":{"total":75,"covered":0,"skipped":0,"pct":0},"branches":{"total":62,"covered":0,"skipped":0,"pct":0}}
+,"/mnt/c/users/c.ouguenoune/Desktop/cours/cloud/frontend/src/pages/admin/AdminPage.tsx": {"lines":{"total":18,"covered":0,"skipped":0,"pct":0},"functions":{"total":5,"covered":0,"skipped":0,"pct":0},"statements":{"total":19,"covered":0,"skipped":0,"pct":0},"branches":{"total":12,"covered":0,"skipped":0,"pct":0}}
+,"/mnt/c/users/c.ouguenoune/Desktop/cours/cloud/frontend/src/pages/auth/LoginPage.tsx": {"lines":{"total":23,"covered":21,"skipped":0,"pct":91.3},"functions":{"total":4,"covered":4,"skipped":0,"pct":100},"statements":{"total":24,"covered":21,"skipped":0,"pct":87.5},"branches":{"total":16,"covered":14,"skipped":0,"pct":87.5}}
+,"/mnt/c/users/c.ouguenoune/Desktop/cours/cloud/frontend/src/pages/auth/RegisterPage.tsx": {"lines":{"total":43,"covered":42,"skipped":0,"pct":97.67},"functions":{"total":8,"covered":8,"skipped":0,"pct":100},"statements":{"total":44,"covered":42,"skipped":0,"pct":95.45},"branches":{"total":30,"covered":28,"skipped":0,"pct":93.33}}
+,"/mnt/c/users/c.ouguenoune/Desktop/cours/cloud/frontend/src/utils/booking.ts": {"lines":{"total":52,"covered":0,"skipped":0,"pct":0},"functions":{"total":8,"covered":0,"skipped":0,"pct":0},"statements":{"total":52,"covered":0,"skipped":0,"pct":0},"branches":{"total":42,"covered":0,"skipped":0,"pct":0}}
+,"/mnt/c/users/c.ouguenoune/Desktop/cours/cloud/frontend/src/utils/dashboard.ts": {"lines":{"total":9,"covered":0,"skipped":0,"pct":0},"functions":{"total":5,"covered":0,"skipped":0,"pct":0},"statements":{"total":9,"covered":0,"skipped":0,"pct":0},"branches":{"total":2,"covered":0,"skipped":0,"pct":0}}
+,"/mnt/c/users/c.ouguenoune/Desktop/cours/cloud/frontend/src/utils/format.ts": {"lines":{"total":10,"covered":0,"skipped":0,"pct":0},"functions":{"total":7,"covered":0,"skipped":0,"pct":0},"statements":{"total":10,"covered":0,"skipped":0,"pct":0},"branches":{"total":3,"covered":0,"skipped":0,"pct":0}}
+,"/mnt/c/users/c.ouguenoune/Desktop/cours/cloud/frontend/src/utils/reservations.ts": {"lines":{"total":31,"covered":0,"skipped":0,"pct":0},"functions":{"total":10,"covered":0,"skipped":0,"pct":0},"statements":{"total":31,"covered":0,"skipped":0,"pct":0},"branches":{"total":23,"covered":0,"skipped":0,"pct":0}}
+,"/mnt/c/users/c.ouguenoune/Desktop/cours/cloud/frontend/src/utils/token.ts": {"lines":{"total":21,"covered":20,"skipped":0,"pct":95.23},"functions":{"total":6,"covered":6,"skipped":0,"pct":100},"statements":{"total":21,"covered":20,"skipped":0,"pct":95.23},"branches":{"total":11,"covered":10,"skipped":0,"pct":90.9}}
+}
+
+=== BUILD ===
+
+> frontend@0.0.0 build
+> tsc -b && vite build
+
+vite v8.3.8 building client environment for production...
+transforming...
+✓ 2264 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                   0.70 kB │ gzip:   0.39 kB
+dist/assets/index-C0KevrcG.css   44.45 kB │ gzip:   8.28 kB
+dist/assets/index-BiB2pVje.js   682.35 kB │ gzip: 207.50 kB
+
+[plugin builtin:vite-reporter] 
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+✓ built in 12.41s
+[33m[PLUGIN_TIMINGS] [0mJavaScript callbacks ran for 1.7s of this 12.4s build (14%).
+The slowest callbacks, timed inside each callback (the wait before a callback starts is excluded, the time it awaits is included):
+  - plugin @tailwindcss/vite:generate:build transform (11%, 1.4s, 2 calls)
+Additional callback time came from callbacks under 1s.
+See https://rolldown.rs/reference/InputOptions.checks#bundlertimings for more details.
+
+Code de sortie : 0
+
+=== BUILD SIZE ===
+=== BUILD SIZE ===
+736K	dist/
+
+=== BUILD ASSETS ===
+total 712K
+-rwxrwxrwx 1 couguenoune couguenoune 667K Nov 27 01:54 index-BiB2pVje.js
+-rwxrwxrwx 1 couguenoune couguenoune  44K Nov 27 01:54 index-C0KevrcG.css
+
+=== NODE VERSION ===
+v20.19.5
+
+=== NPM VERSION ===
+10.8.2
+
+=== NPM CI ===
+
+added 205 packages, and audited 212 packages in 2m
+
+42 packages are looking for funding
+  run `npm fund` for details
+
+found 0 vulnerabilities
+
+=== REPRODUCIBLE BUILD ===
+
+> frontend@0.0.0 build
+> tsc -b && vite build
+
+vite v8.3.8 building client environment for production...
+transforming...
+✓ 2264 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                   0.70 kB │ gzip:   0.39 kB
+dist/assets/index-C0KevrcG.css   44.45 kB │ gzip:   8.28 kB
+dist/assets/index-BiB2pVje.js   682.35 kB │ gzip: 207.50 kB
+
+[plugin builtin:vite-reporter] 
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+✓ built in 7.88s
+
+=== BACKEND REGRESSION ===

@@ -1,0 +1,12 @@
+frontend@0.0.0 /mnt/c/users/c.ouguenoune/Desktop/cours/cloud/frontend
+├── @fullcalendar/core@6.1.22
+├─┬ @fullcalendar/daygrid@6.1.22
+│ └── @fullcalendar/core@6.1.22 deduped
+├─┬ @fullcalendar/interaction@6.1.22
+│ └── @fullcalendar/core@6.1.22 deduped
+├─┬ @fullcalendar/react@6.1.22
+│ └── @fullcalendar/core@6.1.22 deduped
+└─┬ @fullcalendar/timegrid@6.1.22
+  ├── @fullcalendar/core@6.1.22 deduped
+  └── @fullcalendar/daygrid@6.1.22 deduped
+
