@@ -9,8 +9,9 @@ import LoginPage from './pages/auth/LoginPage'
 import RegisterPage from './pages/auth/RegisterPage'
 
 import DashboardPage from './pages/DashboardPage'
+import RoomsPage from './pages/RoomsPage'
 import ProfilePage from './pages/ProfilePage'
-import PlaceholderPage from './pages/PlaceholderPage'
+import PlaceholderPage from './pages/PlaceHolderPage.tsx'
 
 import AdminPage from './pages/admin/AdminPage'
 
@@ -33,10 +34,7 @@ export default function App() {
       <Route
         path="/"
         element={
-          <Navigate
-            to="/dashboard"
-            replace
-          />
+          <Navigate to="/dashboard" replace />
         }
       />
 
@@ -61,12 +59,7 @@ export default function App() {
 
           <Route
             path="/rooms"
-            element={
-              <PlaceholderPage
-                title="Salles de réunion"
-                description="Recherchez un espace adapté à vos besoins."
-              />
-            }
+            element={<RoomsPage />}
           />
 
           <Route
@@ -110,10 +103,7 @@ export default function App() {
       <Route
         path="*"
         element={
-          <Navigate
-            to="/dashboard"
-            replace
-          />
+          <Navigate to="/dashboard" replace />
         }
       />
 
