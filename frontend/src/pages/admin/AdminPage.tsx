@@ -1,186 +1,234 @@
 
-import { useEffect, useState } from 'react'
-
-import { Link } from 'react-router-dom'
+import { useState } from 'react'
 
 import {
-  ArrowLeft,
   ShieldCheck,
-  Users,
+  LayoutDashboard,
   DoorOpen,
-  CalendarDays,
-  Loader2,
+  Users,
+  CalendarCheck,
+  RefreshCw,
 } from 'lucide-react'
 
-import api, {
-  getApiError,
-} from '../../api/client'
+import clsx from 'clsx'
 
-interface AdminStats {
-  total_users: number
-  total_rooms: number
-  active_rooms: number
-  total_reservations: number
-  confirmed_reservations: number
-  cancelled_reservations: number
-}
+import type {
+  AdminTab,
+} from '../../types/admin'
+
+import {
+  useAdmin,
+} from '../../hooks/useAdmin'
+
+import {
+  AdminOverview,
+} from '../../components/admin/AdminOverview'
+
+import {
+  AdminRooms,
+} from '../../components/admin/AdminRooms'
+
+import {
+  AdminUsers,
+} from '../../components/admin/AdminUsers'
+
+import {
+  AdminReservations,
+} from '../../components/admin/AdminReservations'
+
+import {
+  LoadingState,
+} from '../../components/ui/LoadingState'
+
+import {
+  ErrorState,
+} from '../../components/ui/ErrorState'
+
+import {
+  Button,
+} from '../../components/ui/Button'
+
+const tabs = [
+  {
+    value: 'overview',
+    label: "Vue d'ensemble",
+    icon: LayoutDashboard,
+  },
+  {
+    value: 'rooms',
+    label: 'Gestion des salles',
+    icon: DoorOpen,
+  },
+  {
+    value: 'users',
+    label: 'Utilisateurs',
+    icon: Users,
+  },
+  {
+    value: 'reservations',
+    label: 'Réservations',
+    icon: CalendarCheck,
+  },
+] as const
 
 export default function AdminPage() {
-  const [stats, setStats] =
-    useState<AdminStats | null>(null)
+  const [tab, setTab] =
+    useState<AdminTab>('overview')
 
-  const [error, setError] = useState('')
-
-  const [loading, setLoading] =
-    useState(true)
-
-  useEffect(() => {
-    const controller = new AbortController()
-
-    async function loadStats() {
-      try {
-        const response = await api.get<AdminStats>(
-          '/admin/stats',
-          {
-            signal: controller.signal,
-          },
-        )
-
-        if (!controller.signal.aborted) {
-          setStats(response.data)
-        }
-      } catch (err) {
-        if (!controller.signal.aborted) {
-          setError(getApiError(err))
-        }
-      } finally {
-        if (!controller.signal.aborted) {
-          setLoading(false)
-        }
-      }
-    }
-
-    void loadStats()
-
-    return () => controller.abort()
-  }, [])
+  const {
+    stats,
+    rooms,
+    users,
+    reservations,
+    now,
+    isLoading,
+    error,
+    refresh,
+  } = useAdmin()
 
   return (
-    <main className="min-h-screen bg-slate-50 px-5 py-12">
+    <div className="space-y-7">
 
-      <div className="mx-auto max-w-5xl">
+      <section className="relative overflow-hidden rounded-2xl bg-slate-950 p-7 text-white sm:p-9">
 
-        <Link
-          to="/dashboard"
-          className="inline-flex items-center gap-2 text-sm font-medium text-brand-600 hover:text-brand-800"
-        >
-          <ArrowLeft size={17} />
-          Retour au tableau de bord
-        </Link>
+        <div
+          aria-hidden="true"
+          className="absolute -right-20 -top-32 h-96 w-96 rounded-full bg-brand-600/30 blur-3xl"
+        />
 
-        <div className="mt-8 flex items-center gap-4">
-
-          <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-brand-600 text-white">
-            <ShieldCheck size={29} />
-          </div>
+        <div className="relative z-10 flex items-center justify-between gap-6">
 
           <div>
-            <h1 className="text-3xl font-bold text-slate-900">
-              Administration
+
+            <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-xs font-semibold text-brand-300">
+              <ShieldCheck size={14} />
+              Espace administrateur
+            </span>
+
+            <h1 className="mt-4 text-3xl font-bold tracking-tight sm:text-4xl">
+              Centre d'administration
             </h1>
 
-            <p className="mt-1 text-sm text-slate-500">
-              Espace réservé aux administrateurs.
+            <p className="mt-3 max-w-xl text-sm leading-relaxed text-slate-400">
+              Supervisez votre plateforme RoomBooking,
+              gérez vos espaces et consultez
+              les réservations de vos utilisateurs.
             </p>
+
+          </div>
+
+          <div
+            aria-hidden="true"
+            className="hidden h-24 w-24 shrink-0 items-center justify-center rounded-3xl border border-white/10 bg-white/5 text-brand-300 sm:flex"
+          >
+            <ShieldCheck
+              size={51}
+              strokeWidth={1.3}
+            />
           </div>
 
         </div>
 
-        {loading && (
-          <div
-            role="status"
-            className="mt-12 flex items-center gap-3 text-slate-500"
-          >
-            <Loader2
-              className="animate-spin"
-              size={22}
-            />
+      </section>
 
-            Chargement des statistiques...
-          </div>
-        )}
+      <div className="flex flex-wrap items-center justify-between gap-4 rounded-2xl border border-slate-200 bg-white p-3 shadow-sm">
 
-        {error && (
-          <div
-            role="alert"
-            className="mt-8 rounded-xl bg-red-50 p-4 text-sm text-red-700"
-          >
-            {error}
-          </div>
-        )}
+        <nav
+          aria-label="Navigation administrative"
+          className="flex flex-wrap gap-1.5"
+        >
 
-        {stats && (
-          <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          {tabs.map((item) => {
+            const Icon = item.icon
 
-            {[
-              {
-                label: 'Utilisateurs',
-                value: stats.total_users,
-                icon: Users,
-              },
-              {
-                label: 'Salles',
-                value: stats.total_rooms,
-                icon: DoorOpen,
-              },
-              {
-                label: 'Salles actives',
-                value: stats.active_rooms,
-                icon: DoorOpen,
-              },
-              {
-                label: 'Réservations',
-                value: stats.total_reservations,
-                icon: CalendarDays,
-              },
-              {
-                label: 'Confirmées',
-                value: stats.confirmed_reservations,
-                icon: CalendarDays,
-              },
-              {
-                label: 'Annulées',
-                value: stats.cancelled_reservations,
-                icon: CalendarDays,
-              },
-            ].map((item) => {
-              const Icon = item.icon
+            return (
+              <button
+                key={item.value}
+                type="button"
+                aria-pressed={tab === item.value}
+                onClick={() =>
+                  setTab(item.value)
+                }
+                className={clsx(
+                  'inline-flex items-center gap-2 rounded-xl px-4 py-3 text-sm font-medium transition',
 
-              return (
-                <div
-                  key={item.label}
-                  className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm"
-                >
-                  <Icon
-                    size={24}
-                    className="text-brand-600"
-                  />
+                  tab === item.value
+                    ? 'bg-brand-600 text-white'
+                    : 'text-slate-500 hover:bg-slate-100 hover:text-slate-900',
+                )}
+              >
+                <Icon size={17} />
 
-                  <p className="mt-4 text-sm text-slate-500">
-                    {item.label}
-                  </p>
+                {item.label}
+              </button>
+            )
+          })}
 
-                  <p className="mt-2 text-3xl font-bold text-slate-900">
-                    {item.value}
-                  </p>
-                </div>
-              )
-            })}
+        </nav>
 
-          </div>
-        )}
+        <Button
+          variant="secondary"
+          loading={isLoading}
+          onClick={refresh}
+        >
+          {!isLoading && (
+            <RefreshCw size={17} />
+          )}
+
+          Actualiser
+        </Button>
 
       </div>
-    </main>
+
+      {isLoading ? (
+        <LoadingState
+          message="Chargement des données administrateur..."
+        />
+      ) : error ? (
+        <ErrorState
+          message={error}
+          onRetry={refresh}
+        />
+      ) : stats ? (
+        <>
+
+          {tab === 'overview' && (
+            <AdminOverview stats={stats} />
+          )}
+
+          {tab === 'rooms' && (
+            <AdminRooms
+              rooms={rooms}
+              reservations={reservations}
+              now={now}
+              onChanged={refresh}
+            />
+          )}
+
+          {tab === 'users' && (
+            <AdminUsers
+              users={users}
+              reservations={reservations}
+            />
+          )}
+
+          {tab === 'reservations' && (
+            <AdminReservations
+              reservations={reservations}
+              rooms={rooms}
+              users={users}
+              now={now}
+              onChanged={refresh}
+            />
+          )}
+
+        </>
+      ) : null}
+
+      <footer className="pb-2 text-center text-xs text-slate-400">
+        RoomBooking · Administration de la plateforme
+      </footer>
+
+    </div>
   )
 }

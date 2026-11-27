@@ -20,3 +20,18 @@ export interface RoomFilters {
   offset?: number
   limit?: number
 }
+
+export interface RoomCreate {
+  name: string
+  description: string | null
+  capacity: number
+  equipment: string[]
+}
+
+export interface RoomUpdate {
+  name?: string
+  description?: string | null
+  capacity?: number
+  equipment?: string[]
+  is_active?: boolean
+}
