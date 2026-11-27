@@ -1,4 +1,3 @@
-
 import {
   Routes,
   Route,
@@ -10,9 +9,9 @@ import RegisterPage from './pages/auth/RegisterPage'
 
 import DashboardPage from './pages/DashboardPage'
 import RoomsPage from './pages/RoomsPage'
+import CalendarPage from './pages/CalendarPage'
+import ReservationsPage from './pages/ReservationsPage'
 import ProfilePage from './pages/ProfilePage'
-import PlaceholderPage from './pages/PlaceHolderPage.tsx'
-
 import AdminPage from './pages/admin/AdminPage'
 
 import {
@@ -64,22 +63,12 @@ export default function App() {
 
           <Route
             path="/calendar"
-            element={
-              <PlaceholderPage
-                title="Calendrier"
-                description="Visualisez vos réunions et vos créneaux."
-              />
-            }
+            element={<CalendarPage />}
           />
 
           <Route
             path="/reservations"
-            element={
-              <PlaceholderPage
-                title="Mes réservations"
-                description="Retrouvez et gérez vos réservations."
-              />
-            }
+            element={<ReservationsPage />}
           />
 
           <Route

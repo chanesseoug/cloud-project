@@ -156,10 +156,10 @@ export function BookingSuccess({
         </Button>
 
         <Link
-          to="/dashboard"
+          to="/reservations"
           className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-brand-600 px-4 py-3 text-sm font-semibold text-white transition hover:bg-brand-700"
         >
-          Voir le tableau de bord
+          Voir mes réservations
           <ArrowRight size={16} />
         </Link>
 

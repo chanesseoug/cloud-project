@@ -1,0 +1,121 @@
+.roombooking-calendar {
+  --fc-border-color: #e2e8f0;
+  --fc-page-bg-color: #ffffff;
+  --fc-neutral-bg-color: #f8fafc;
+  --fc-today-bg-color: rgba(99, 102, 241, 0.06);
+
+  --fc-button-text-color: #475569;
+  --fc-button-bg-color: #ffffff;
+  --fc-button-border-color: #e2e8f0;
+
+  --fc-button-hover-bg-color: #f1f5f9;
+  --fc-button-hover-border-color: #cbd5e1;
+
+  --fc-button-active-bg-color: #4f46e5;
+  --fc-button-active-border-color: #4f46e5;
+
+  --fc-now-indicator-color: #ef4444;
+
+  font-size: 13px;
+}
+
+.roombooking-calendar .fc-toolbar {
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 24px;
+}
+
+.roombooking-calendar .fc-toolbar-title {
+  color: #0f172a;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.roombooking-calendar .fc-button {
+  padding: 8px 12px;
+  font-size: 12px;
+  font-weight: 600;
+  box-shadow: none;
+}
+
+.roombooking-calendar
+.fc-button-primary:not(:disabled).fc-button-active {
+  color: white;
+}
+
+.roombooking-calendar .fc-button:focus {
+  outline: 2px solid #818cf8;
+  outline-offset: 2px;
+  box-shadow: none;
+}
+
+.roombooking-calendar .fc-col-header-cell {
+  background: #f8fafc;
+}
+
+.roombooking-calendar .fc-col-header-cell-cushion {
+  padding: 12px 4px;
+  color: #475569;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.roombooking-calendar .fc-timegrid-slot {
+  height: 28px;
+}
+
+.roombooking-calendar .fc-timegrid-slot-label {
+  color: #94a3b8;
+  font-size: 11px;
+}
+
+.roombooking-calendar .fc-event {
+  border-radius: 6px;
+  cursor: pointer;
+  padding: 3px;
+  font-weight: 500;
+}
+
+.roombooking-calendar .fc-event-title {
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.roombooking-calendar .fc-event-time {
+  font-size: 10px;
+}
+
+.roombooking-calendar
+.reservation-cancelled .fc-event-title {
+  text-decoration: line-through;
+}
+
+.roombooking-calendar .fc-daygrid-day-number {
+  color: #475569;
+  font-weight: 600;
+  padding: 8px;
+}
+
+.roombooking-calendar .fc-daygrid-day-top {
+  cursor: pointer;
+}
+
+@media (max-width: 767px) {
+  .roombooking-calendar .fc-toolbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .roombooking-calendar .fc-toolbar-title {
+    font-size: 16px;
+  }
+
+  .roombooking-calendar .fc-button {
+    padding: 7px 10px;
+    font-size: 11px;
+  }
+
+  .roombooking-calendar .fc-event-title {
+    font-size: 10px;
+  }
+}

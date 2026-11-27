@@ -73,16 +73,61 @@ export default function RoomsPage() {
   const [searchParams, setSearchParams] =
     useSearchParams()
 
-  const [values, setValues] =
-    useState<RoomSearchValues>(
-      () => createDefaultFilters(),
-    )
+const [initialSearch] = useState(() => {
+  const defaults = createDefaultFilters()
 
-  const [appliedFilters, setAppliedFilters] =
-    useState<ApiRoomFilters>({})
+  const start = searchParams.get('start')
+  const end = searchParams.get('end')
 
-  const [appliedSlot, setAppliedSlot] =
-    useState<BookingSlot | undefined>()
+  if (!start || !end) {
+    return {
+      values: defaults,
+      filters: {} as ApiRoomFilters,
+      slot: undefined as BookingSlot | undefined,
+    }
+  }
+
+  const candidate: RoomSearchValues = {
+    ...defaults,
+    onlyAvailable: true,
+    start,
+    end,
+  }
+
+  try {
+    return {
+      values: candidate,
+
+      filters: buildRoomFilters(candidate),
+
+      slot: {
+        start,
+        end,
+      } as BookingSlot,
+    }
+  } catch {
+    return {
+      values: defaults,
+      filters: {} as ApiRoomFilters,
+      slot: undefined as BookingSlot | undefined,
+    }
+  }
+})
+
+const [values, setValues] =
+  useState<RoomSearchValues>(
+    initialSearch.values,
+  )
+
+const [appliedFilters, setAppliedFilters] =
+  useState<ApiRoomFilters>(
+    initialSearch.filters,
+  )
+
+const [appliedSlot, setAppliedSlot] =
+  useState<BookingSlot | undefined>(
+    initialSearch.slot,
+  )
 
   const [filterError, setFilterError] =
     useState<string | null>(null)
@@ -185,11 +230,23 @@ export default function RoomsPage() {
   }
 
   function handleReset() {
-    setValues(createDefaultFilters())
-    setAppliedFilters({})
-    setAppliedSlot(undefined)
-    setFilterError(null)
-  }
+  setValues(createDefaultFilters())
+  setAppliedFilters({})
+  setAppliedSlot(undefined)
+  setFilterError(null)
+
+  setSearchParams(
+    (previous) => {
+      const next = new URLSearchParams(previous)
+
+      next.delete('start')
+      next.delete('end')
+
+      return next
+    },
+    { replace: true },
+  )
+}
 
   function handleRefresh() {
     if (appliedSlot) {
